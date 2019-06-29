@@ -27,7 +27,6 @@ const
   OptiFineCmd='java -jar ';
   MCPFDir='{userappdata}\.minecraft\';
   OptiDir='OptiFine';
-  OptiVer='{VersionInfoTextVersion}';
 
 var
   SMCDir: string;

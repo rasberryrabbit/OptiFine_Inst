@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine 1.13.2_HD_U_E7 Installer
-AppVersion=0.1
+AppVersion=0.2
 ;AppVerName=OptiFine Installer 1.13.2_HD_U_E7
 AppPublisher=anon
 OutputBaseFilename=OptiFine_1.13.2_HD_U_E7_Inst
@@ -15,15 +15,16 @@ Compression=lzma
 SolidCompression=yes
 Uninstallable=no
 VersionInfoTextVersion=1.13.2_HD_U_E7
-DisableWelcomePage=False
-CreateAppDir=False
+DefaultDirName={commonpf32}\Minecraft\runtime\jre-x64\bin\
+PrivilegesRequired=lowest
+EnableDirDoesntExistWarning=True
+DirExistsWarning=no
 
 [ThirdParty]
 UseRelativePaths=True
 
 [Code]
 const
-  MCDir='{commonpf32}\Minecraft\runtime\jre-x64\bin\';
   OptiFineCmd='java -jar ';
   MCPFDir='{userappdata}\.minecraft\';
   OptiDir='OptiFine';
@@ -39,7 +40,7 @@ function MCDirCheck:string;
 var
   SD: string;
 begin
-  SD:=ExpandConstant(MCDir);
+  SD:=WizardDirValue;
   if DirExists(SD) then
     Result:=SD
     else
@@ -50,7 +51,7 @@ function MCJavaCheck:string;
 var
   SD: string;
 begin
-  SD:=ExpandConstant(MCDir+'java.exe');
+  SD:=WizardDirValue+'\java.exe';
   if FileExists(SD) then
     Result:=SD
     else

@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine 1.14.3_HD_U_F1(+BSL) Installer
-AppVersion=0.3
+AppVersion=0.4
 ;AppVerName=OptiFine Installer 1.14.3_HD_U_F1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_1.14.3_HD_U_F1_BSL_Inst
@@ -22,6 +22,10 @@ DirExistsWarning=no
 
 [ThirdParty]
 UseRelativePaths=True
+
+[Languages]
+Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Code]
 const

@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine 1.14.3_HD_U_F1(+QOL) Installer
-AppVersion=0.4
+AppVersion=0.6
 ;AppVerName=OptiFine Installer 1.14.3_HD_U_F1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_1.14.3_HD_U_F1_QOL_Inst
@@ -32,6 +32,7 @@ const
   OptiFineCmd='java -jar ';
   MCPFDir='{userappdata}\.minecraft\';
   OptiDir='OptiFine';
+  NewMCDir='{commonpf32}\Minecraft Launcher\runtime\jre-x64\bin';
   OldMCDir='{commonpf32}\Minecraft\runtime\jre-x64\bin';
 
 var
@@ -45,7 +46,7 @@ function MCDirCheck:string;
 var
   SD: string;
 begin
-  SD:=WizardDirValue;
+  SD:=WizardForm.DirEdit.Text;
   if DirExists(SD) then
     Result:=SD
     else
@@ -78,6 +79,22 @@ begin
     Result:=SD
     else
       Result:='';
+end;
+
+procedure CurPageChanged(CurPageID: Integer);
+begin
+  if CurPageID=wpReady then begin
+    if (SMCDir='') or (SJava='') or (SMCPFDir='') or (SOptiDir='') then
+      WizardForm.NextButton.Enabled:=False;
+  end else
+  // check and fill folder
+  if CurPageID=wpSelectDir then begin
+    WizardForm.DirEdit.Text:=ExpandConstant(NewMCDir);
+    SMCDir:=MCDirCheck;
+    SJava:=MCJavaCheck;
+    if SJava<>'' then
+      WizardForm.DirEdit.Text:=SMCDir;
+  end;
 end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
@@ -115,14 +132,6 @@ begin
   Result:=Result+#13#10;
 end;
 
-procedure CurPageChanged(CurPageID: Integer);
-begin
-  if CurPageID=wpReady then begin
-    if (SMCDir='') or (SJava='') or (SMCPFDir='') or (SOptiDir='') then
-      WizardForm.NextButton.Enabled:=False;
-  end;
-end;
-
 function GetOutDir(dummy:string):string;
 begin
   Result:=SOptiDir;
@@ -149,6 +158,7 @@ end;
 Source: "OptiFine_1.14.3_HD_U_F1.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
 Source: "BSL+v7.1.02.2.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
 Source: "Builder's QOL Shaders V2.2.3.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
+Source: "Builder's Modded Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetOptiFile}"; Flags: nowait;

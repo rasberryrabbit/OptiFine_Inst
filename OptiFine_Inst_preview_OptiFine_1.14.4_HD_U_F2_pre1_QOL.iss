@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine preview_OptiFine_1.14.4_HD_U_F2_pre1(+QOL) Installer
-AppVersion=0.1
+AppVersion=0.2
 ;AppVerName=OptiFine Installer preview_OptiFine_1.14.4_HD_U_F2_pre1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_preview_OptiFine_1.14.4_HD_U_F2_pre1_QOL_Inst
@@ -40,7 +40,7 @@ var
   SJava: string;
   SMCPFDir: string;
   SOptiDir: string;
-
+  DirMsg: TLabel;
 
 function MCDirCheck:string;
 var
@@ -55,7 +55,14 @@ begin
       if DirExists(SD) then
         Result:=SD
         else
-          Result:='';
+        begin
+          // use installed JRE path
+          SD:=GetEnv('JAVA_HOME')+'\bin';
+          if (SD<>'') and DirExists(SD) then
+            Result:=SD
+            else
+              Result:='';
+        end;
     end;
 end;
 
@@ -89,8 +96,20 @@ begin
   end else
   // check and fill folder
   if CurPageID=wpSelectDir then begin
+    // add label
     WizardForm.DirEdit.Text:=ExpandConstant(NewMCDir);
+    if DirMsg=nil then begin
+      DirMsg:=TLabel.Create(WizardForm);
+      DirMsg.Parent:=WizardForm.SelectDirPage;
+    end;
+    DirMsg.Top:=ScaleY(110);
+    DirMsg.Caption:='java(c).exe가 포함된 폴더를 선택해야 합니다.'+#13#10+'Folder must contain java(c).exe';
+
     SMCDir:=MCDirCheck;
+    if SMCDir='' then
+      DirMsg.Font.Color:=clRed
+      else
+        DirMsg.Font.Color:=clGreen;
     SJava:=MCJavaCheck;
     if SJava<>'' then
       WizardForm.DirEdit.Text:=SMCDir;

@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine preview_OptiFine_1.14.4_HD_U_F2_pre1(+QOL) Installer
-AppVersion=0.5
+AppVersion=0.6
 ;AppVerName=OptiFine Installer preview_OptiFine_1.14.4_HD_U_F2_pre1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_preview_OptiFine_1.14.4_HD_U_F2_pre1_QOL_Inst
@@ -213,7 +213,7 @@ end;
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "preview_OptiFine_1.14.4_HD_U_F2_pre1.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
 Source: "BSL+v7.1.03.2.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
-Source: "Builder's QOL Shaders V2.2.3.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
+Source: "Builder's QOL Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
 Source: "Builder's Modded Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
 
 [Run]

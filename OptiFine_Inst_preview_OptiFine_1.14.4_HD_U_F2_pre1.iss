@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{A4E87F40-940A-4E29-85F4-16DD68B67AC1}
 AppName=OptiFine preview_OptiFine_1.14.4_HD_U_F2_pre1 Installer
-AppVersion=0.4
+AppVersion=0.5
 ;AppVerName=OptiFine Installer preview_OptiFine_1.14.4_HD_U_F2_pre1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_preview_OptiFine_1.14.4_HD_U_F2_pre1_Inst
@@ -29,7 +29,6 @@ const
   MCPFDir='{userappdata}\.minecraft\';
   OptiDir='OptiFine';
   NewMCDir='{commonpf32}\Minecraft Launcher\runtime\jre-x64\bin';
-  OldMCDir='{commonpf32}\Minecraft\runtime\jre-x64\bin';
 
 var
   SMCDir: string;
@@ -41,24 +40,51 @@ var
 function MCDirCheck:string;
 var
   SD: string;
+  SL: TStringList;
+  i, j:Integer;
 begin
   SD:=WizardForm.DirEdit.Text;
   if DirExists(SD) then
     Result:=SD
     else
     begin
-      SD:=ExpandConstant(OldMCDir);
-      if DirExists(SD) then
-        Result:=SD
-        else
-        begin
-          // use installed JRE path
-          SD:=GetEnv('JAVA_HOME');
-          if (SD<>'') and DirExists(SD) then
-            Result:=SD+'\bin'
-            else
+      // scan log file
+      SD:=ExpandConstant(MCPFDir)+'nativelog.txt';
+      if FileExists(SD) then 
+      begin
+        SL:=TStringList.Create;
+        try
+          SL.LoadFromFile(SD);
+          if SL.Count>0 then
+            for i:=0 to SL.Count-1 do
             begin
-              // scan registry
+              j:=Pos('Java dir:',SL[i]);
+              if j>0 then
+              begin
+                SD:=Trim(Copy(SL[i],j+9,1024))+'\bin';
+                break;
+              end;
+            end;
+        finally
+          SL.Free;
+        end;
+        if DirExists(SD) then
+          Result:=SD
+          else
+            Result:='';
+      end else
+        Result:='';
+
+      // use installed JRE path
+      if Result='' then
+      begin
+        SD:=GetEnv('JAVA_HOME');
+        if (SD<>'') and DirExists(SD) then
+          Result:=SD+'\bin'
+          else
+            // scan registry
+            if Result='' then
+            begin
               if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\WOW6432Node\Mojang\Minecraft','InstallDirNew',SD) then
                 Result:=SD+'runtime\jre-x64\bin'
                 else 
@@ -69,7 +95,7 @@ begin
               if not DirExists(Result) then
                 Result:='';
             end;
-        end;
+      end;
     end;
 end;
 

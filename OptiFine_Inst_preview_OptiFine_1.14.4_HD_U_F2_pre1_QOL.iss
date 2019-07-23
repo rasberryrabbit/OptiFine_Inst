@@ -57,9 +57,9 @@ begin
         else
         begin
           // use installed JRE path
-          SD:=GetEnv('JAVA_HOME')+'\bin';
+          SD:=GetEnv('JAVA_HOME');
           if (SD<>'') and DirExists(SD) then
-            Result:=SD
+            Result:=SD+'\bin'
             else
               Result:='';
         end;

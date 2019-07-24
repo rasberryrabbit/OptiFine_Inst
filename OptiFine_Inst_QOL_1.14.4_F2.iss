@@ -33,7 +33,6 @@ const
   MCPFDir='{userappdata}\.minecraft\';
   OptiDir='OptiFine';
   NewMCDir='{commonpf32}\Minecraft Launcher\runtime\jre-x64\bin';
-  OldMCDir='{commonpf32}\Minecraft\runtime\jre-x64\bin';
 
 var
   SMCDir: string;
@@ -45,24 +44,62 @@ var
 function MCDirCheck:string;
 var
   SD: string;
+  SL: TStringList;
+  i, j:Integer;
 begin
   SD:=WizardForm.DirEdit.Text;
   if DirExists(SD) then
     Result:=SD
     else
     begin
-      SD:=ExpandConstant(OldMCDir);
-      if DirExists(SD) then
-        Result:=SD
-        else
-        begin
-          // use installed JRE path
-          SD:=GetEnv('JAVA_HOME');
-          if (SD<>'') and DirExists(SD) then
-            Result:=SD+'\bin'
-            else
-              Result:='';
+      // scan log file
+      SD:=ExpandConstant(MCPFDir)+'nativelog.txt';
+      if FileExists(SD) then 
+      begin
+        SL:=TStringList.Create;
+        try
+          SL.LoadFromFile(SD);
+          if SL.Count>0 then
+            for i:=0 to SL.Count-1 do
+            begin
+              j:=Pos('Java dir:',SL[i]);
+              if j>0 then
+              begin
+                SD:=Trim(Copy(SL[i],j+9,1024))+'\bin';
+                break;
+              end;
+            end;
+        finally
+          SL.Free;
         end;
+        if DirExists(SD) then
+          Result:=SD
+          else
+            Result:='';
+      end else
+        Result:='';
+
+      // use installed JRE path
+      if Result='' then
+      begin
+        SD:=GetEnv('JAVA_HOME');
+        if (SD<>'') and DirExists(SD) then
+          Result:=SD+'\bin'
+          else
+            // scan registry
+            if Result='' then
+            begin
+              if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\WOW6432Node\Mojang\Minecraft','InstallDirNew',SD) then
+                Result:=SD+'runtime\jre-x64\bin'
+                else 
+                if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\Mojang\Minecraft','InstallDirNew',SD) then
+                  Result:=SD+'runtime\jre\bin'
+                  else
+                    Result:='';
+              if not DirExists(Result) then
+                Result:='';
+            end;
+      end;
     end;
 end;
 
@@ -180,5 +217,5 @@ Source: "Builder's QOL Shaders V2.2.3.zip"; DestDir: "{code:GetShaderDir}"; Flag
 Source: "Builder's Modded Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
 
 [Run]
-Filename: "{code:JavaExec}"; Parameters: "{code:GetOptiFile}"; Flags: nowait;
+Filename: "{code:JavaExec}"; Parameters: "{code:GetOptiFile}"; Flags: postinstall nowait
 

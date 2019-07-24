@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{7E80BB62-9B38-4633-88DD-AAA0F2D03D0A}
 AppName=OptiFine 1.14.3_HD_U_F2(+QOL) Installer
-AppVersion=0.1
+AppVersion=0.2
 ;AppVerName=OptiFine Installer 1.14.3_HD_U_F2
 AppPublisher=anon
 OutputBaseFilename=OptiFine_1.14.3_HD_U_F2_QOL_Inst

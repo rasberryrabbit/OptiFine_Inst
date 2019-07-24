@@ -7,7 +7,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{A4E87F40-940A-4E29-85F4-16DD68B67AC1}
 AppName=OptiFine preview_OptiFine_1.14.4_HD_U_F2_pre1 Installer
-AppVersion=0.5
+AppVersion=0.7
 ;AppVerName=OptiFine Installer preview_OptiFine_1.14.4_HD_U_F2_pre1
 AppPublisher=anon
 OutputBaseFilename=OptiFine_preview_OptiFine_1.14.4_HD_U_F2_pre1_Inst
@@ -204,5 +204,5 @@ end;
 Source: "preview_OptiFine_1.14.4_HD_U_F2_pre1.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
 
 [Run]
-Filename: "{code:JavaExec}"; Parameters: "{code:GetOptiFile}"; Flags: nowait;
+Filename: "{code:JavaExec}"; Parameters: "{code:GetOptiFile}"; Flags: postinstall nowait;
 

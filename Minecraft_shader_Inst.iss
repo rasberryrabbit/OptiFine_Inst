@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Minecraft 1.13+ Shader Installer "
-#define MyAppVersion "0.1"
+#define MyAppVersion "0.2"
 #define MyAppExeName "MyProg.exe"
 
 [Setup]
@@ -42,8 +42,9 @@ function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoType
 begin
   Result:='OptiFine 1.13+ Shader Installer'+#13#10;
   Result:=Result+'」r」lLexShino_」4」lShaders」r」l_Remade_」4」lV2.15」r」l.zip'+#13#10;
-  Result:=Result+'BSL+v7.1.02.2.zip'+#13#10;
-  Result:=Result+'Builder''s QOL Shaders V2.2.3.zip'+#13#10;
+  Result:=Result+'BSL+v7.1.03.2.zip'+#13#10;
+  Result:=Result+'Builder''s QOL Shaders V2.3.0.zip'+#13#10;
+  Result:=Result+'Builder''s Modded Shaders V2.3.0.zip'+#13#10;
   Result:=Result+'Kappa_rc0.9.2.zip'+#13#10;
   Result:=Result+'Sildurs Vibrant Shaders v1.22 Lite.zip'+#13#10;
   Result:=Result+'Sildurs Vibrant Shaders v1.22 Medium.zip'+#13#10;
@@ -75,8 +76,9 @@ end;
 
 [Files]
 Source: "」r」lLexShino_」4」lShaders」r」l_Remade_」4」lV2.15」r」l.zip"; DestDir: "{code:GetShaderDir}"
-Source: "BSL+v7.1.02.2.zip"; DestDir: "{code:GetShaderDir}"
-Source: "Builder's QOL Shaders V2.2.3.zip"; DestDir: "{code:GetShaderDir}"
+Source: "BSL+v7.1.03.2.zip"; DestDir: "{code:GetShaderDir}"
+Source: "Builder's QOL Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"
+Source: "Builder's Modded Shaders V2.3.0.zip"; DestDir: "{code:GetShaderDir}"
 Source: "Kappa_rc0.9.2.zip"; DestDir: "{code:GetShaderDir}"
 Source: "Sildurs Vibrant Shaders v1.22 Lite.zip"; DestDir: "{code:GetShaderDir}"
 Source: "Sildurs Vibrant Shaders v1.22 Medium.zip"; DestDir: "{code:GetShaderDir}"

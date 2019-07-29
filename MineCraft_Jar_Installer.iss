@@ -10,7 +10,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{E3B4E41E-697A-4C07-BB22-3A38C4392D77}
 AppName={#JarName}
-AppVersion=0.7
+AppVersion=0.8
 ;AppVerName=OptiFine Installer {#JarName}
 AppPublisher=anon
 OutputBaseFilename={#JarName}
@@ -27,6 +27,37 @@ UseRelativePaths=True
 
 [Languages]
 Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
+Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[CustomMessages]
+FilePage1=Minecraft jar file to install
+korean.FilePage1=설치할 Minecraft jar 파일
+FilePage2=Select Minecraft jar File to install?
+korean.FilePage2=설치할 Minecraft jar 파일이 어떤건가요?
+FilePage3=Select Minecraft jar file, then press Next.
+korean.FilePage3=Minecraft jar 파일이 있는 곳을 선택하고, 다음 버튼을 누르세요.
+FilePage4=&Jar File Path: 
+korean.FilePage4=&Jar 파일 경로: 
+DirPage1=Java Runtime Folder
+korean.DirPage1=자바 런타임 폴더
+DirPage2=Where is Java Runtime Folder?
+korean.DirPage2=자바 런타임이 있는 폴더가 어딘가요?
+DirPage3=Using Java.exe for installing Minecraft jar file.\n\n
+korean.DirPage3=Java.exe를 Minecraft jar 파일을 설치하는데 사용합니다.\n\n
+DirPage4=Press Next to continue. Press Browse for selecting another folder.\n
+korean.DirPage4=계속 하려면 다음을 누르세요. 다른 폴더를 선택하려면 찾아보기를 누르세요.\n
+DirPage5=(It automatically set by using nativelog.txt in Minecraft user folder.)\n
+korean.DirPage5=(기본적으로 마인크래프트 사용자 폴더의 nativelog.txt를 사용하여 위치를 찾습니다.)\n
+DirPage6=Select folder contains java.exe.\n
+korean.DirPage6=java.exe가 포함된 폴더를 선택해야 합니다.\n
+ReadyMemo1= - No Jar File\n
+korean.ReadyMemo1= - Jar File 없음\n
+ReadyMemo2= No Java Runtime
+korean.ReadyMemo2= 자바 런타임 없음
+ReadyMemo3= No java.exe
+korean.ReadyMemo3= jave.exe 없음
+ReadyMemo4= No Minecraft user data
+korean.ReadyMemo4= 마인크래프트 사용자 데이터 없음
 
 [Code]
 const
@@ -40,6 +71,12 @@ var
   FilePage: TInputFileWizardPage;
   DirPage: TInputDirWizardPage;
   SJarFile: string;
+
+function CustomMessageN(const id:string):string;
+begin
+  Result:=CustomMessage(id);
+  StringChangeEx(Result,'\n',#13#10,True);
+end;
 
 function MCDirCheck:string;
 var
@@ -136,19 +173,19 @@ end;
 procedure InitializeWizard();
 begin
   FilePage:=CreateInputFilePage(wpWelcome,
-  '설치할 Minecraft jar 파일', '설치할 Minecraft jar 파일이 어떤건가요?',
-  'Minecraft jar 파일이 있는 곳을 선택하고, 다음 버튼을 누르세요.');
-  FilePage.Add('&Jar File Path: ',
+  CustomMessageN('FilePage1'),CustomMessageN('FilePage2'),
+  CustomMessageN('FilePage3'));
+  FilePage.Add(CustomMessageN('FilePage4'),
   'Jar File|*.jar|All files|*.*',
   '.jar');
 
   DirPage:=CreateInputDirPage(wpWelcome,
-  '자바 런타임 폴더', '자바 런타임이 있는 폴더가 어딘가요?',
-  'Java.exe를 Minecraft jar 파일을 설치하는데 사용합니다.'#13#10#13#10+
-  '계속 하려면 다음을 누르세요. 다른 폴더를 선택하려면 찾아보기를 누르세요.'#13#10+
-  '(기본적으로 마인크래프트 사용자 폴더의 nativelog.txt를 사용하여 위치를 찾습니다.)'#13#10,
+  CustomMessageN('DirPage1'),CustomMessageN('DirPage2') ,
+  CustomMessageN('DirPage3')+
+  CustomMessageN('DirPage4')+
+  CustomMessageN('DirPage5'),
   False, '');
-  DirPage.Add('java.exe가 포함된 폴더를 선택해야 합니다.'+#13#10+'Folder must contain java.exe'#13#10);
+  DirPage.Add(CustomMessageN('DirPage6'));
   DirPage.Values[0]:=ExpandConstant(NewMCDir);
 
   SMCDir:=MCDirCheck;
@@ -172,27 +209,27 @@ begin
   if SJarFile<>'' then
     Result:=Result+' - ok'#13#10
     else
-      Result:=Result+' - No Jar File'#13#10;
+      Result:=Result+CustomMessageN('ReadyMemo1');
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
     Result:=Result+' - ok'
     else
-      Result:=Result+' No Java Runtime';
+      Result:=Result+CustomMessageN('ReadyMemo2');
   Result:=Result+#13#10;
   SJava:=MCJavaCheck;
   Result:=Result+SJava;
   if SJava<>'' then
     Result:=Result+' - ok'
     else
-      Result:=Result+' No java.exe';
+      Result:=Result+CustomMessageN('ReadyMemo3');
   Result:=Result+#13#10;
   SMCPFDir:=MCPFDirCheck;
   Result:=Result+SMCPFDir;
   if SMCPFDir<>'' then
     Result:=Result+' -ok'
     else
-      Result:=Result+' No Minecraft user data';
+      Result:=Result+CustomMessageN('ReadyMemo4');
   Result:=Result+#13#10;
 end;
 

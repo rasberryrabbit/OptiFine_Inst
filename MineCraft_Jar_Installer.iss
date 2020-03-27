@@ -10,7 +10,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{E3B4E41E-697A-4C07-BB22-3A38C4392D77}
 AppName={#JarName}
-AppVersion=0.8
+AppVersion=0.8.1
 ;AppVerName=OptiFine Installer {#JarName}
 AppPublisher=anon
 OutputBaseFilename={#JarName}
@@ -49,7 +49,9 @@ korean.DirPage4=계속 하려면 다음을 누르세요. 다른 폴더를 선택하려면 찾아보기를 �
 DirPage5=(It automatically set by using nativelog.txt in Minecraft user folder.)\n
 korean.DirPage5=(기본적으로 마인크래프트 사용자 폴더의 nativelog.txt를 사용하여 위치를 찾습니다.)\n
 DirPage6=Select folder contains java.exe.\n
+DirPage7=(fill automatically, click Next)\n
 korean.DirPage6=java.exe가 포함된 폴더를 선택해야 합니다.\n
+korean.DirPage7=(자동으로 선택, 다음을 누르세요)\n
 ReadyMemo1= - No Jar File\n
 korean.ReadyMemo1= - Jar File 없음\n
 ReadyMemo2= No Java Runtime
@@ -185,7 +187,7 @@ begin
   CustomMessageN('DirPage4')+
   CustomMessageN('DirPage5'),
   False, '');
-  DirPage.Add(CustomMessageN('DirPage6'));
+  DirPage.Add(CustomMessageN('DirPage6')+CustomMessageN('DirPage7'));
   DirPage.Values[0]:=ExpandConstant(NewMCDir);
 
   SMCDir:=MCDirCheck;

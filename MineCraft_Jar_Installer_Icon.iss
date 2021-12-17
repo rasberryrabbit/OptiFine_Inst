@@ -8,7 +8,7 @@
 ; NOTE: The value of AppId uniquely identifies this application.
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{8E2298F0-C4BF-43B7-9078-BAF1808B2712}
+AppId={{B4EF444B-65EC-4F62-AA86-33E297E60CA3}
 AppName={#JarName}
 AppVersion=0.8.2
 ;AppVerName=OptiFine Installer {#JarName}
@@ -22,6 +22,7 @@ PrivilegesRequired=lowest
 CreateAppDir=False
 ShowLanguageDialog=auto
 DisableProgramGroupPage=yes
+InternalCompressLevel=ultra
 
 [ThirdParty]
 UseRelativePaths=True

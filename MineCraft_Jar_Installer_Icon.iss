@@ -12,7 +12,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{B4EF444B-65EC-4F62-AA86-33E297E60CA3}
 AppName={#JarName}
-AppVersion=0.8.2
+AppVersion=0.8.3
 ;AppVerName=OptiFine Installer {#JarName}
 AppPublisher=anon
 OutputBaseFilename={#JarName}

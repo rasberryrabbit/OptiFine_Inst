@@ -2,6 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define JarName 'OptiFine_1.18.1_HD_U_H4'
+#define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
+#define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -9,15 +11,15 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{34E1DD58-00E5-44A7-BB7C-80E0833A0026}
 AppName={#JarName} Installer
-AppVersion=0.82
+AppVersion=0.83
 ;AppVerName=OptiFine Installer {#JarName}
 AppPublisher=anon
-OutputBaseFilename={#JarName}_QOL
+OutputBaseFilename={#JarName}_QOL_N
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
 VersionInfoTextVersion={#JarName}
-DefaultDirName={commonpf32}\Minecraft Launcher\runtime\jre-x64\bin
+DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
 DirExistsWarning=no
@@ -48,7 +50,7 @@ var
 
 function MCDirCheck:string;
 var
-  SD: string;
+  SD, ST: string;
   SL: TStringList;
   i, j:Integer;
 begin
@@ -67,6 +69,20 @@ begin
           if SL.Count>0 then
             for i:=0 to SL.Count-1 do
             begin
+              // new beta version java
+              j:=Pos('command line string:',SL[i]);
+              if j>0 then
+              begin
+                ST:=Trim(Copy(SL[i],j+20,1024));
+                j:=Pos('.exe',ST);
+                if j>0 then
+                begin
+                  ST:=Copy(ST,1,j+4);
+                  ST:=ExtractFilePath(ST);
+                end else
+                  ST:='';
+              end;
+              // old version java runtime
               j:=Pos('Java dir:',SL[i]);
               if j>0 then
               begin
@@ -104,6 +120,23 @@ begin
               if not DirExists(Result) then
                 Result:='';
             end;
+      end;
+      // new launcher has java beta version
+      if Result='' then
+      begin
+        // use launcher folder
+        if ST<>'' then
+        begin
+          Result:=ST+'runtime'+'{#JavaBeta}';
+          if not DirExists(Result) then
+          begin
+            Result:=ST+'runtime'+'\jre-x64\bin';
+            if not DirExists(Result) then
+              Result:='';
+          end;
+        end;
+        // no java runtime found
+        Result:=ExpandConstant('{#DefaultRuntime}{#JavaBeta}');
       end;
     end;
 end;

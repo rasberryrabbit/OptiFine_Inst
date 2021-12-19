@@ -3,6 +3,8 @@
 
 #define JarName "MineCraft Jar Install"
 #define NewMCFolder "{commonpf32}\Minecraft Launcher\runtime\jre-x64\bin"
+#define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
+#define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -82,7 +84,7 @@ end;
 
 function MCDirCheck:string;
 var
-  SD: string;
+  SD, ST: string;
   SL: TStringList;
   i, j:Integer;
 begin
@@ -101,6 +103,20 @@ begin
           if SL.Count>0 then
             for i:=0 to SL.Count-1 do
             begin
+              // new beta version java
+              j:=Pos('command line string:',SL[i]);
+              if j>0 then
+              begin
+                ST:=Trim(Copy(SL[i],j+20,1024));
+                j:=Pos('.exe',ST);
+                if j>0 then
+                begin
+                  ST:=Copy(ST,1,j+4);
+                  ST:=ExtractFilePath(ST);
+                end else
+                  ST:='';
+              end;
+              // old version java runtime
               j:=Pos('Java dir:',SL[i]);
               if j>0 then
               begin
@@ -138,6 +154,23 @@ begin
               if not DirExists(Result) then
                 Result:='';
             end;
+      end;
+      // new launcher has java beta version
+      if Result='' then
+      begin
+        // use launcher folder
+        if ST<>'' then
+        begin
+          Result:=ST+'runtime'+'{#JavaBeta}';
+          if not DirExists(Result) then
+          begin
+            Result:=ST+'runtime'+'\jre-x64\bin';
+            if not DirExists(Result) then
+              Result:='';
+          end;
+        end;
+        // no java runtime found
+        Result:=ExpandConstant('{#DefaultRuntime}{#JavaBeta}');
       end;
     end;
 end;

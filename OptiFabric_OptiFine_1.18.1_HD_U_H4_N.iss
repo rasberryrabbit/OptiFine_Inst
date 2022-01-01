@@ -12,7 +12,7 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName1} {#JarName2} Installer
+AppName={#JarName1} {#JarName3} {#JarName2} Installer
 AppVersion=0.83
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
@@ -20,7 +20,7 @@ OutputBaseFilename=Fabric_{#JarName2}_QOL_N
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
-VersionInfoTextVersion={#JarName1}_{#JarName2}
+VersionInfoTextVersion={#JarName1} {#JarName3} {#JarName2}
 DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
@@ -195,7 +195,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName1} {#JarName2} Installer'+#13#10;
+  Result:='{#JarName1} {#JarName3} {#JarName2} Installer'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then

@@ -16,7 +16,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName3} {#JarName2} Installer
-AppVersion=0.83
+AppVersion=0.84
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_N
@@ -38,10 +38,14 @@ Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
 [CustomMessages]
 needjava=Folder must contain java.exe(set automatically)
 korean.needjava=java.exe가 포함된 폴더를 선택해야 합니다(자동으로 선택됨)
+OptiDesc=OptiFabric(OptiFine)
+korean.OptiDesc=옵티패브릭(옵티파인)
+MiniDesc=Xaero's Minimap
+korean.MiniDesc=Xaero의 미니맵
 
 [Components]
-Name: "OptiFine"; Description: "OptiFabric"; Types: full compact custom;
-Name: "Minimap"; Description: "Xaero's Minimap"; Types: full custom
+Name: "OptiFine"; Description: "{cm:OptiDesc}"; Types: full compact custom
+Name: "Minimap"; Description: "{cm:MiniDesc}"; Types: custom
 
 [Code]
 const

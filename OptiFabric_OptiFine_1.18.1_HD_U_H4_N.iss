@@ -4,6 +4,9 @@
 #define JarName1 'fabric-installer-0.10.2'
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
+#define JarName4 'fabric-api-0.45.0+1.18'
+#define JarName5 'Xaeros_Minimap_21.23.0_Fabric_1.18'
+
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
 
@@ -35,6 +38,10 @@ Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
 [CustomMessages]
 needjava=Folder must contain java.exe(set automatically)
 korean.needjava=java.exe가 포함된 폴더를 선택해야 합니다(자동으로 선택됨)
+
+[Components]
+Name: "OptiFine"; Description: "OptiFabric"; Types: full compact custom;
+Name: "Minimap"; Description: "Xaero's Minimap"; Types: full custom
 
 [Code]
 const
@@ -253,15 +260,19 @@ end;
 ; Install Fabric
 Source: "{#JarName1}.jar"; DestDir: "{tmp}"; Flags: ignoreversion
 ; Mod OptiFabric
-Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
+Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: OptiFine; Flags: ignoreversion
 ; Mod OptiFine
-Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
+Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: OptiFine; Flags: ignoreversion
+; Mod Fabric API
+Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
+; Mod minimap
+Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: Minimap; Flags: ignoreversion
 ; Shaders
-Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
-Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
-Source: "SEUS-Renewed-v1.0.1.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
-Source: "VanillaPlus_v3.0a.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
-Source: "Nostalgia_v3.1.zip"; DestDir: "{code:GetShaderDir}"; Flags: ignoreversion
+Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "SEUS-Renewed-v1.0.1.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "VanillaPlus_v3.0a.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "Nostalgia_v3.1.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile}";

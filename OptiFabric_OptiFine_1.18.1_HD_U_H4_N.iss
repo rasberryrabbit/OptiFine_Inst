@@ -4,8 +4,9 @@
 #define JarName1 'fabric-installer-0.10.2'
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
-#define JarName4 'fabric-api-0.45.0+1.18'
+#define JarName4 'fabric-api-0.45.1+1.18'
 #define JarName5 'Xaeros_Minimap_21.23.0_Fabric_1.18'
+#define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
@@ -15,11 +16,11 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName1} {#JarName3} {#JarName2} Installer
-AppVersion=0.84
+AppName={#JarName1} {#JarName3} {#JarName4} {#JarName2} Installer
+AppVersion=0.87
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
-OutputBaseFilename=Fabric_{#JarName2}_QOL_N
+OutputBaseFilename=Fabric_{#JarName2}_QOL_NV
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
@@ -42,9 +43,12 @@ OptiDesc=OptiFabric(OptiFine)
 korean.OptiDesc=옵티패브릭(옵티파인)
 MiniDesc=Xaero's Minimap
 korean.MiniDesc=Xaero의 미니맵
+VoiceDesc=Simple Voice Chat
+korean.VoiceDesc=간단 보이스 챗(음성 채팅)
 
 [Components]
 Name: "OptiFine"; Description: "{cm:OptiDesc}"; Types: full compact custom
+Name: "VoiceChat"; Description: "{cm:VoiceDesc}"; Types: custom
 Name: "Minimap"; Description: "{cm:MiniDesc}"; Types: custom
 
 [Code]
@@ -271,6 +275,8 @@ Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: OptiFine; Fl
 Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
 ; Mod minimap
 Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: Minimap; Flags: ignoreversion
+; Simple Voice chat
+Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; Shaders
 Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
 Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion

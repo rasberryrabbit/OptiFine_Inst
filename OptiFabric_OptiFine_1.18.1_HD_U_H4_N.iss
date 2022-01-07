@@ -4,7 +4,7 @@
 #define JarName1 'fabric-installer-0.10.2'
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
-#define JarName4 'fabric-api-0.45.1+1.18'
+#define JarName4 'fabric-api-0.45.2+1.18'
 #define JarName5 'Xaeros_Minimap_21.23.0_Fabric_1.18'
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 
@@ -17,7 +17,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName3} {#JarName4} {#JarName2} Installer
-AppVersion=0.87
+AppVersion=0.88
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_NV

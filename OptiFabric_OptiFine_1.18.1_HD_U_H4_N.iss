@@ -8,6 +8,7 @@
 #define JarName5 'Xaeros_Minimap_21.23.0_Fabric_1.18'
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
+#define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
@@ -48,12 +49,15 @@ VoiceDesc=Simple Voice Chat
 korean.VoiceDesc=간단 보이스 챗(음성 채팅)
 CocoaInput=CocoaInput
 korean.CocoaInput=한글 입력(CocoaInput)
+WindowedFull=Windowed Fullscreen
+korean.WindowedFull=전체창 보기
 
 [Components]
 Name: "OptiFine"; Description: "{cm:OptiDesc}"; Types: full compact custom
 Name: "VoiceChat"; Description: "{cm:VoiceDesc}"; Types: custom
 Name: "Minimap"; Description: "{cm:MiniDesc}"; Types: custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput}"; Types: full compact custom
+Name: "WindowedFull"; Description: "{cm:WindowedFull}"; Types: custom
 
 [Code]
 const
@@ -283,6 +287,8 @@ Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: Minimap; Fla
 Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
 Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
+; Windowed FullScreen
+Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
 ; Shaders
 Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
 Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion

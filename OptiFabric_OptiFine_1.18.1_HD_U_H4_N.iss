@@ -18,7 +18,7 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName1} {#JarName3} {#JarName4} {#JarName2} Installer
+AppName={#JarName1} {#JarName4} Installer
 AppVersion=0.88
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
@@ -26,7 +26,7 @@ OutputBaseFilename=Fabric_{#JarName2}_QOL_NV
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
-VersionInfoTextVersion={#JarName1} {#JarName3} {#JarName2}
+VersionInfoTextVersion={#JarName1} {#JarName4}
 DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
@@ -53,11 +53,11 @@ WindowedFull=Windowed Fullscreen
 korean.WindowedFull=전체창 보기
 
 [Components]
-Name: "OptiFine"; Description: "{cm:OptiDesc}"; Types: full compact custom
-Name: "VoiceChat"; Description: "{cm:VoiceDesc}"; Types: custom
-Name: "Minimap"; Description: "{cm:MiniDesc}"; Types: custom
-Name: "CocoaInput"; Description: "{cm:CocoaInput}"; Types: full compact custom
-Name: "WindowedFull"; Description: "{cm:WindowedFull}"; Types: custom
+Name: "OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: full compact custom
+Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
+Name: "Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
+Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: full compact custom
+Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 
 [Code]
 const

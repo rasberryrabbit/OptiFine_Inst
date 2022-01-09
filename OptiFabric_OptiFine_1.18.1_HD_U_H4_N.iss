@@ -237,7 +237,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName1} {#JarName3} Installer'+#13#10;
+  Result:='{#JarName1} {#JarName4} Installer'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
@@ -255,7 +255,7 @@ begin
   SMCPFDir:=MCPFDirCheck;
   Result:=Result+SMCPFDir;
   if SMCPFDir<>'' then
-    Result:=Result+' -ok'
+    Result:=Result+' - ok'
     else
       Result:=Result+' No Minecraft user data';
   Result:=Result+#13#10;

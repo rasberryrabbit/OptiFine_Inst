@@ -10,6 +10,7 @@
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
 #define JarName9 'sodium-fabric-mc1.18-0.4.0-alpha5+build.9'
+#define JarName10 'canvas-fabric-mc118-1.0.2281'
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
@@ -54,10 +55,13 @@ WindowedFull=Windowed Fullscreen
 korean.WindowedFull=전체창 보기
 Sodium=Sodium
 korean.Sodium=Sodium
+Canvasmod=Canvas
+korean.Canvasmod=Canvas
 
 [Components]
 Name: "OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: full compact custom; Flags: exclusive
 Name: "Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
+Name: "Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
 Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: full compact custom
@@ -295,6 +299,8 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
 ; Sodium
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Sodium; Flags: ignoreversion
+; Canvas
+Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Canvas; Flags: ignoreversion
 ; Shaders
 Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
 Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion

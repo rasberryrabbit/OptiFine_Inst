@@ -57,14 +57,25 @@ Sodium=Sodium
 korean.Sodium=Sodium
 Canvasmod=Canvas
 korean.Canvasmod=Canvas
+Render=Renderer
+korean.Render=렌더러
+standard=standard
+korean.standard=기본
+custom=custom
+korean.custom=사용자선택
+
+[Types]
+Name: "standard"; Description: "{cm:standard}"
+Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 
 [Components]
-Name: "OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: full compact custom; Flags: exclusive
-Name: "Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
-Name: "Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
+Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
+Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
+Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
 Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
-Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: full compact custom
+Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 
 [Code]
@@ -226,7 +237,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName1} {#JarName3} {#JarName2} Installer'+#13#10;
+  Result:='{#JarName1} {#JarName3} Installer'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
@@ -284,9 +295,9 @@ end;
 ; Install Fabric
 Source: "{#JarName1}.jar"; DestDir: "{tmp}"; Flags: ignoreversion
 ; Mod OptiFabric
-Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 ; Mod OptiFine
-Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 ; Mod Fabric API
 Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
 ; Mod minimap
@@ -298,15 +309,15 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 ; Windowed FullScreen
 Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
 ; Sodium
-Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Sodium; Flags: ignoreversion
+Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium; Flags: ignoreversion
 ; Canvas
-Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Canvas; Flags: ignoreversion
+Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Shaders
-Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
-Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
-Source: "SEUS-Renewed-v1.0.1.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
-Source: "VanillaPlus_v3.0a.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
-Source: "Nostalgia_v3.1.zip"; DestDir: "{code:GetShaderDir}"; Components: OptiFine; Flags: ignoreversion
+Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+Source: "SEUS-Renewed-v1.0.1.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+Source: "VanillaPlus_v3.0a.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+Source: "Nostalgia_v3.1.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile}";

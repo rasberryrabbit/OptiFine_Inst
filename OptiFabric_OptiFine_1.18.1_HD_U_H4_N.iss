@@ -232,6 +232,20 @@ begin
     SJava:=MCJavaCheck;
     if SJava<>'' then
       WizardForm.DirEdit.Text:=SMCDir;
+  end else
+  if CurPageID=wpInstalling then
+  begin
+    // optifine
+    if FileExists(SModsDir+'\'+'{#JarName2}.jar') then
+      DeleteFile(SModsDir+'\'+'{#JarName2}.jar');
+    if FileExists(SModsDir+'\'+'{#JarName3}.jar') then
+      DeleteFile(SModsDir+'\'+'{#JarName3}.jar');
+    // sodium
+    if FileExists(SModsDir+'\'+'{#JarName9}.jar') then
+      DeleteFile(SModsDir+'\'+'{#JarName9}.jar');
+    // Canvas
+    if FileExists(SModsDir+'\'+'{#JarName10}.jar') then
+      DeleteFile(SModsDir+'\'+'{#JarName10}.jar');
   end;
 end;
 

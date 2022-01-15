@@ -7,7 +7,7 @@
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
 #define JarName4 'fabric-api-0.46.0+1.18'
-#define JarName5 'Xaeros_Minimap_21.23.0_Fabric_1.18'
+#define JarName5 'Xaeros_Minimap_21.23.1_Fabric_1.18'
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'

@@ -11,8 +11,14 @@
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
-#define JarName9 'sodium-fabric-mc1.18-0.4.0-alpha5+build.9'
-#define JarName10 'canvas-fabric-mc118-1.0.2281'
+#define JarName9 'sodium-fabric-mc1.18.1-0.4.0-alpha6+build.14'
+#define JarName10 'canvas-fabric-mc118-1.0.2282'
+
+#define ZipName1 'Builders_QOL_Shaders_V2.8.2'
+#define ZipName2 'Builders_Modded_Shaders_V2.8.3'
+#define ZipName3 'SEUS-Renewed-v1.0.1'
+#define ZipName4 'VanillaPlus_v3.0a'
+#define ZipName5 'Nostalgia_v3.1'
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
@@ -65,6 +71,8 @@ standard=standard
 korean.standard=기본
 custom=custom
 korean.custom=사용자선택
+Shader=Shader
+korean.Shader=세이더
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -79,6 +87,13 @@ Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
+Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
+Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
+Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
+Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
+Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: custom;
+Name: "Shader\Zip5"; Description: "{#ZipName5}"; Types: custom;
+
 
 [Code]
 const
@@ -329,11 +344,11 @@ Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sod
 ; Canvas
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Shaders
-Source: "Builders_QOL_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
-Source: "Builders_Modded_Shaders_V2.8.2.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
-Source: "SEUS-Renewed-v1.0.1.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
-Source: "VanillaPlus_v3.0a.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
-Source: "Nostalgia_v3.1.zip"; DestDir: "{code:GetShaderDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
+Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
+Source: "{#ZipName3}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip3; Flags: ignoreversion
+Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip4; Flags: ignoreversion
+Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile}";

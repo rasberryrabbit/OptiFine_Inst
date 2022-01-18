@@ -87,25 +87,24 @@ Name: "standard"; Description: "{cm:standard}"
 Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 
 [Components]
-Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
+Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
 Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
-Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
-Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
-Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
-Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
+Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
 Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: custom;
 Name: "Shader\Zip5"; Description: "{#ZipName5}"; Types: custom;
-
+Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
+Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
+Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 
 [Code]
 const

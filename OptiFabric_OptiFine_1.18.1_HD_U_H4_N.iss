@@ -15,6 +15,7 @@
 #define JarName10 'canvas-fabric-mc118-1.0.2282'
 #define JarName11 'BetterF3-1.2.2-Fabric-1.18'
 #define JarName12 'XaerosWorldMap_1.19.1_Fabric_1.18'
+#define JarName13 'phosphor-fabric-mc1.18.x-0.8.1'
 
 #define ZipName1 'Builders_QOL_Shaders_V2.8.2'
 #define ZipName2 'Builders_Modded_Shaders_V2.8.3'
@@ -81,6 +82,8 @@ MapMod=Map
 korean.MapMod=지도
 WorldDesc=World Map
 korean.WorldDesc=월드맵
+PerfMod=Performance
+korean.PerfMod=성능
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -96,6 +99,7 @@ Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
+Name: "phosphor"; Description: "{cm:PerfMod} {#JarName13}"; Types: custom
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -358,6 +362,8 @@ Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sod
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
+; phosphor mod
+Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: phosphor; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

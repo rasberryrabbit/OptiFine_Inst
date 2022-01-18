@@ -13,6 +13,8 @@
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
 #define JarName9 'sodium-fabric-mc1.18.1-0.4.0-alpha6+build.14'
 #define JarName10 'canvas-fabric-mc118-1.0.2282'
+#define JarName11 'BetterF3-1.2.2-Fabric-1.18'
+#define JarName12 'XaerosWorldMap_1.19.1_Fabric_1.18'
 
 #define ZipName1 'Builders_QOL_Shaders_V2.8.2'
 #define ZipName2 'Builders_Modded_Shaders_V2.8.3'
@@ -53,8 +55,8 @@ needjava=Folder must contain java.exe(set automatically)
 korean.needjava=java.exe가 포함된 폴더를 선택해야 합니다(자동으로 선택됨)
 OptiDesc=OptiFabric(OptiFine)
 korean.OptiDesc=옵티패브릭(옵티파인)
-MiniDesc=Xaero's Minimap
-korean.MiniDesc=Xaero의 미니맵
+MiniDesc=Minimap
+korean.MiniDesc=미니맵
 VoiceDesc=Simple Voice Chat
 korean.VoiceDesc=간단 보이스 챗(음성 채팅)
 CocoaInput=CocoaInput
@@ -73,6 +75,12 @@ custom=custom
 korean.custom=사용자선택
 Shader=Shader
 korean.Shader=세이더
+Debug=Debug
+korean.Debug=디버그
+MapMod=Map
+korean.MapMod=지도
+WorldDesc=World Map
+korean.WorldDesc=월드맵
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -84,10 +92,13 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
 Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
-Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
-Name: "Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
+Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
+Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
+Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
+Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
+Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -333,7 +344,9 @@ Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Opt
 ; Mod Fabric API
 Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Components: FabricAPI; Flags: ignoreversion
 ; Mod minimap
-Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: Minimap; Flags: ignoreversion
+Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Minimap; Flags: ignoreversion
+; Mod worldmap
+Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worldmap; Flags: ignoreversion
 ; Simple Voice chat
 Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
@@ -344,6 +357,8 @@ Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium; Flags: ignoreversion
 ; Canvas
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
+; Debug mod
+Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

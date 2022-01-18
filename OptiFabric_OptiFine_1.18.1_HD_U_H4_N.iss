@@ -6,7 +6,7 @@
 #define JarName1 'fabric-installer-0.10.2'
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
-#define JarName4 'fabric-api-0.46.0+1.18'
+#define JarName4 'fabric-api-0.46.1+1.18'
 #define JarName5 'Xaeros_Minimap_21.23.1_Fabric_1.18'
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
@@ -79,6 +79,7 @@ Name: "standard"; Description: "{cm:standard}"
 Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 
 [Components]
+Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
@@ -330,7 +331,7 @@ Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Opt
 ; Mod OptiFine
 Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 ; Mod Fabric API
-Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Flags: ignoreversion
+Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Components: FabricAPI; Flags: ignoreversion
 ; Mod minimap
 Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: Minimap; Flags: ignoreversion
 ; Simple Voice chat

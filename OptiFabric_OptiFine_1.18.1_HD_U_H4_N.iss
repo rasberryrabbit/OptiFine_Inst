@@ -16,6 +16,7 @@
 #define JarName11 'BetterF3-1.2.2-Fabric-1.18'
 #define JarName12 'XaerosWorldMap_1.19.1_Fabric_1.18'
 #define JarName13 'phosphor-fabric-mc1.18.x-0.8.1'
+#define JarName14 'lithium-fabric-mc1.18.1-0.7.7'
 
 #define ZipName1 'Builders_QOL_Shaders_V2.8.2'
 #define ZipName2 'Builders_Modded_Shaders_V2.8.3'
@@ -32,7 +33,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName4} Installer {#CurrDate}
-AppVersion=0.88
+AppVersion=0.89
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_NV_{#CurrDate}
@@ -99,7 +100,9 @@ Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
-Name: "phosphor"; Description: "{cm:PerfMod} {#JarName13}"; Types: custom
+Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
+Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom
+Name: "Perf\Lithium"; Description: "{#JarName14}"; Types: custom
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -116,6 +119,7 @@ const
   MCPFDir='{userappdata}\.minecraft\';
   ModsDir='Mods';
   NewMCDir='{#SetupSetting("DefaultDirName")}';
+  MaxFindDeep=10;
 
 var
   SMCDir: string;
@@ -123,12 +127,70 @@ var
   SMCPFDir: string;
   SModsDir: string;
   DirMsg: TLabel;
+  FindRec: array[0..MaxFindDeep] of TFindRec;
+  FindDeep: Integer;
+
+function FindFilePath(path, filename:string):string;
+var
+  bf: Boolean;
+  cPath: string;
+  i: Integer;
+begin
+  FindDeep:=0;
+  cPath:='';
+  bf:=FindFirst(path+'\*.*',FindRec[FindDeep]);
+  if bf then begin
+    try
+    while bf do begin
+      // skip '.' and '..'
+      if (FindRec[FindDeep].Name<>'.') and (FindRec[FindDeep].Name<>'..') then begin
+        if FindRec[FindDeep].Attributes and FILE_ATTRIBUTE_DIRECTORY<>0 then begin
+          // folder
+          if FindDeep<MaxFindDeep then begin
+            cPath:='';
+            for i:=0 to FindDeep do
+              cPath:=cPath+'\'+FindRec[i].Name;
+            Inc(FindDeep);
+            bf:=FindFirst(path+cpath+'\*.*',FindRec[FindDeep]);
+            if bf then
+              continue;
+          end;
+        end else begin
+          // file
+          if CompareText(FindRec[FindDeep].Name,filename)=0 then begin
+            cPath:=path;
+            if FindDeep>0 then
+              for i:=0 to FindDeep-1 do
+                cPath:=cPath+'\'+FindRec[i].Name;
+            Result:=cPath;
+            break;
+          end;
+        end;
+      end;
+      // Next Folder
+      bf:=FindNext(FindRec[FindDeep]);
+      while not bf do begin
+        FindClose(FindRec[FindDeep]);
+        if FindDeep=0 then
+          break;
+        Dec(FindDeep);
+        bf:=FindNext(FindRec[FindDeep]);
+      end;
+    end;
+    finally
+      // Free FindRec
+      if FindDeep>0 then
+        for i:=FindDeep downto 0 do
+          FindClose(FindRec[FindDeep]);
+    end;
+  end;
+end;
 
 function MCDirCheck:string;
 var
   SD, ST: string;
   SL: TStringList;
-  i, j:Integer;
+  i, j, k: Integer;
 begin
   SD:=WizardForm.DirEdit.Text;
   if DirExists(SD) then
@@ -136,7 +198,7 @@ begin
     else
     begin
       // scan log file
-      SD:=ExpandConstant(MCPFDir)+'nativelog.txt';
+      SD:=ExpandConstant(MCPFDir)+'launcher_log.txt';
       if FileExists(SD) then 
       begin
         SL:=TStringList.Create;
@@ -146,15 +208,20 @@ begin
             for i:=0 to SL.Count-1 do
             begin
               // new beta version java
-              j:=Pos('command line string:',SL[i]);
+              j:=Pos('string:',SL[i]);
               if j>0 then
               begin
-                ST:=Trim(Copy(SL[i],j+20,1024));
+                k:=Pos('"',SL[i]);
+                if k>0 then
+                  j:=k+1
+                  else
+                    j:=j+7;
+                ST:=Trim(Copy(SL[i],j,1024));
                 j:=Pos('.exe',ST);
                 if j>0 then
                 begin
                   ST:=Copy(ST,1,j+4);
-                  ST:=ExtractFilePath(ST);
+                  ST:=ExtractFileDir(ST);
                 end else
                   ST:='';
               end;
@@ -163,7 +230,8 @@ begin
               if j>0 then
               begin
                 SD:=Trim(Copy(SL[i],j+9,1024))+'\bin';
-                break;
+                if ST<>'' then
+                  break;
               end;
             end;
         finally
@@ -175,7 +243,6 @@ begin
             Result:='';
       end else
         Result:='';
-
       // use installed JRE path
       if Result='' then
       begin
@@ -202,17 +269,10 @@ begin
       begin
         // use launcher folder
         if ST<>'' then
-        begin
-          Result:=ST+'runtime'+'{#JavaBeta}';
-          if not DirExists(Result) then
-          begin
-            Result:=ST+'runtime'+'\jre-x64\bin';
-            if not DirExists(Result) then
-              Result:='';
-          end;
-        end;
-        // no java runtime found
-        Result:=ExpandConstant('{#DefaultRuntime}{#JavaBeta}');
+          Result:=FindFilePath(ST,'java.exe');
+        //Result:=ExpandConstant('{#DefaultRuntime}{#JavaBeta}');
+        if Result='' then
+          Result:=FindFilePath(ExpandConstant('{#DefaultRuntime}'),'java.exe');
       end;
     end;
 end;
@@ -363,7 +423,9 @@ Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Ca
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; phosphor mod
-Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: phosphor; Flags: ignoreversion
+Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\phosphor; Flags: ignoreversion
+; lithium mod
+Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\Lithium; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

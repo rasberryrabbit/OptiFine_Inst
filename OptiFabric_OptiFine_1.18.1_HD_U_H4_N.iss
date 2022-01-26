@@ -134,18 +134,23 @@ function FindFilePath(path, filename:string):string;
 var
   bf: Boolean;
   cPath: string;
-  i: Integer;
+  i, j: Integer;
 begin
   if path='' then
     exit;
   FindDeep:=0;
+  j:=0;
   cPath:='';
   bf:=FindFirst(path+'\*.*',FindRec[FindDeep]);
   if bf then begin
     try
     while bf do begin
+      // limit count
+      if j>700 then
+        break;
       // skip '.' and '..'
       if (FindRec[FindDeep].Name<>'.') and (FindRec[FindDeep].Name<>'..') then begin
+        Inc(j);
         if FindRec[FindDeep].Attributes and FILE_ATTRIBUTE_DIRECTORY<>0 then begin
           // folder
           if FindDeep<MaxFindDeep then begin

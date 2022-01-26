@@ -14,7 +14,7 @@
 #define JarName9 'sodium-fabric-mc1.18.1-0.4.0-alpha6+build.14'
 #define JarName10 'canvas-fabric-mc118-1.0.2282'
 #define JarName11 'BetterF3-1.2.2-Fabric-1.18'
-#define JarName12 'XaerosWorldMap_1.19.1_Fabric_1.18'
+#define JarName12 'XaerosWorldMap_1.20.0_Fabric_1.18'
 #define JarName13 'phosphor-fabric-mc1.18.x-0.8.1'
 #define JarName14 'lithium-fabric-mc1.18.1-0.7.7'
 
@@ -33,7 +33,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName4} Installer {#CurrDate}
-AppVersion=0.89
+AppVersion=0.90
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_NV_{#CurrDate}
@@ -109,9 +109,9 @@ Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
 Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: custom;
 Name: "Shader\Zip5"; Description: "{#ZipName5}"; Types: custom;
-Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
+Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 
 [Code]
 const
@@ -136,6 +136,8 @@ var
   cPath: string;
   i: Integer;
 begin
+  if path='' then
+    exit;
   FindDeep:=0;
   cPath:='';
   bf:=FindFirst(path+'\*.*',FindRec[FindDeep]);
@@ -193,7 +195,8 @@ var
   i, j, k: Integer;
 begin
   SD:=WizardForm.DirEdit.Text;
-  if DirExists(SD) then
+  ST:=FindFilePath(SD,'java.exe');
+  if ST<>'' then
     Result:=SD
     else
     begin
@@ -237,32 +240,27 @@ begin
         finally
           SL.Free;
         end;
-        if DirExists(SD) then
-          Result:=SD
-          else
-            Result:='';
+        Result:=FindFilePath(SD,'java.exe');
       end else
         Result:='';
       // use installed JRE path
       if Result='' then
       begin
         SD:=GetEnv('JAVA_HOME');
-        if (SD<>'') and DirExists(SD) then
-          Result:=SD+'\bin'
-          else
-            // scan registry
-            if Result='' then
-            begin
-              if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\WOW6432Node\Mojang\Minecraft','InstallDirNew',SD) then
-                Result:=SD+'runtime\jre-x64\bin'
-                else 
-                if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\Mojang\Minecraft','InstallDirNew',SD) then
-                  Result:=SD+'runtime\jre\bin'
-                  else
-                    Result:='';
-              if not DirExists(Result) then
-                Result:='';
-            end;
+        if (SD<>'')then
+          Result:=FindFilePath(SD,'java.exe');
+        // scan registry
+        if Result='' then
+          begin
+            if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\WOW6432Node\Mojang\Minecraft','InstallDirNew',SD) then
+              Result:=SD+'runtime\jre-x64\bin'
+              else 
+              if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\Mojang\Minecraft','InstallDirNew',SD) then
+                Result:=SD+'runtime\jre\bin'
+                else
+                  Result:='';
+            Result:=FindFilePath(Result,'java.exe');
+          end;
       end;
       // new launcher has java beta version
       if Result='' then

@@ -33,7 +33,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName4} Installer {#CurrDate}
-AppVersion=0.90
+AppVersion=0.91
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_NV_{#CurrDate}
@@ -302,6 +302,23 @@ begin
       Result:='';
 end;
 
+procedure DirEdit_Change(Sender: TObject);
+begin
+  SMCDir:=MCDirCheck;
+  if SMCDir='' then
+    DirMsg.Font.Color:=clRed
+    else
+      DirMsg.Font.Color:=clGreen;
+  SJava:=MCJavaCheck;
+  if SJava<>'' then
+    WizardForm.DirEdit.Text:=SMCDir;
+end;
+
+procedure InitializeWizard;
+begin
+  WizardForm.DirEdit.OnChange:=@DirEdit_Change;
+end;
+
 procedure CurPageChanged(CurPageID: Integer);
 begin
   if CurPageID=wpReady then begin
@@ -319,14 +336,7 @@ begin
     DirMsg.Top:=ScaleY(110);
     DirMsg.Caption:=CustomMessage('needjava');
 
-    SMCDir:=MCDirCheck;
-    if SMCDir='' then
-      DirMsg.Font.Color:=clRed
-      else
-        DirMsg.Font.Color:=clGreen;
-    SJava:=MCJavaCheck;
-    if SJava<>'' then
-      WizardForm.DirEdit.Text:=SMCDir;
+    DirEdit_Change(nil);
   end else
   if CurPageID=wpInstalling then
   begin

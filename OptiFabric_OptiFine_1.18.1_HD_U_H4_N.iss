@@ -202,7 +202,7 @@ begin
   SD:=WizardForm.DirEdit.Text;
   ST:=FindFilePath(SD,'java.exe');
   if ST<>'' then
-    Result:=SD
+    Result:=ST
     else
     begin
       // scan log file

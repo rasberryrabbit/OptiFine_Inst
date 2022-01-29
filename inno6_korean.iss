@@ -39,25 +39,34 @@ end;
 function NextButtonClick(CurPageID: Integer): Boolean;
 begin
   if CurPageID = wpReady then begin
-    DownloadPage.Clear;
-    DownloadPage.Add('https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Korean.isl', 'Korean.isl','');
-    DownloadPage.Show;
-    try
+    if WizardIsComponentSelected('github') then
+    begin
+      DownloadPage.Clear;
+      DownloadPage.Add('https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Korean.isl', 'Korean.isl','');
+      DownloadPage.Show;
       try
-        DownloadPage.Download;
-        Result := True;
-      except
-        SuppressibleMsgBox(AddPeriod(GetExceptionMessage), mbCriticalError, MB_OK, IDOK);
-        Result := False;
+        try
+          DownloadPage.Download;
+          Result:=True;
+        except
+          SuppressibleMsgBox(AddPeriod(GetExceptionMessage), mbCriticalError, MB_OK, IDOK);
+          Result:=False;
+        end;
+      finally
+        DownloadPage.Hide;
       end;
-    finally
-      DownloadPage.Hide;
-      if (not FileExists(ExpandConstant('{tmp}\Korean.isl'))) or
-         (not WizardIsComponentSelected('github')) then 
-        FileCopy(ExpandConstant('{tmp}\local\Korean.isl'), ExpandConstant('{tmp}\Korean.isl'), false);
-    end;
+    end else
+      Result:=True;
   end else
-    Result := True;
+    Result:=True;
+end;
+
+function GetFilePath(s:string):string;
+begin
+  Result:=ExpandConstant('{tmp}\Korean.isl');
+  if (not FileExists(ExpandConstant('{tmp}\Korean.isl'))) or
+     (not WizardIsComponentSelected('github')) then
+     Result:=ExpandConstant('{tmp}\local\Korean.isl');
 end;
 
 [Languages]
@@ -68,4 +77,4 @@ Name: "github"; Description: "From Github"; Types: full;
 
 [Files]
 Source: "Korean.isl"; DestDir: "{tmp}\local"; Flags: ignoreversion;
-Source: "{tmp}\Korean.isl"; DestDir: "{#default_path}"; Flags: ignoreversion external;
+Source: "{code:GetFilePath}"; DestDir: "{#default_path}"; Flags: ignoreversion external;

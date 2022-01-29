@@ -52,7 +52,8 @@ begin
       end;
     finally
       DownloadPage.Hide;
-      if not FileExists(ExpandConstant('{tmp}\Korean.isl')) then
+      if (not FileExists(ExpandConstant('{tmp}\Korean.isl'))) or
+         (not WizardIsComponentSelected('github')) then 
         FileCopy(ExpandConstant('{tmp}\local\Korean.isl'), ExpandConstant('{tmp}\Korean.isl'), false);
     end;
   end else
@@ -61,6 +62,9 @@ end;
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Components]
+Name: "github"; Description: "From Github"; Types: full;
 
 [Files]
 Source: "Korean.isl"; DestDir: "{tmp}\local"; Flags: ignoreversion;

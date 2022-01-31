@@ -7,16 +7,16 @@
 #define JarName2 'OptiFine_1.18.1_HD_U_H4'
 #define JarName3 'optifabric-1.12.10'
 #define JarName4 'fabric-api-0.46.1+1.18'
-#define JarName5 'Xaeros_Minimap_21.23.1_Fabric_1.18'
+#define JarName5 'Xaeros_Minimap_22.1.2_Fabric_1.18'
 #define JarName6 'voicechat-fabric-1.18.1-2.1.28'
 #define JarName7 'CocoaInput-1.18-fabric-4.0.4'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
 #define JarName9 'sodium-fabric-mc1.18.1-0.4.0-alpha6+build.14'
 #define JarName10 'canvas-fabric-mc118-1.0.2282'
 #define JarName11 'BetterF3-1.2.2-Fabric-1.18'
-#define JarName12 'XaerosWorldMap_1.20.0_Fabric_1.18'
+#define JarName12 'XaerosWorldMap_1.20.1_Fabric_1.18'
 #define JarName13 'phosphor-fabric-mc1.18.x-0.8.1'
-#define JarName14 'lithium-fabric-mc1.18.1-0.7.7'
+#define JarName14 'iris-mc1.18.1-1.2.0-pre'
 
 #define ZipName1 'Builders_QOL_Shaders_V2.8.2'
 #define ZipName2 'Builders_Modded_Shaders_V2.8.3'
@@ -66,7 +66,9 @@ korean.CocoaInput=한글 입력
 WindowedFull=Windowed Fullscreen
 korean.WindowedFull=전체창 보기
 Sodium=Sodium
-korean.Sodium=Sodium
+korean.Sodium=소듐
+Iris=Iris
+korean.Iris=아이리스
 Canvasmod=Canvas
 korean.Canvasmod=Canvas
 Render=Renderer
@@ -95,14 +97,14 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: custom; Flags: exclusive
-Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
+Name: "Renderer\Sodium\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: custom;
+;Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
 Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom
-;Name: "Perf\Lithium"; Description: "{#JarName14}"; Types: custom
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -348,6 +350,9 @@ begin
     // sodium
     if FileExists(SModsDir+'\'+'{#JarName9}.jar') then
       DeleteFile(SModsDir+'\'+'{#JarName9}.jar');
+    // iris
+    if FileExists(SModsDir+'\'+'{#JarName14}.jar') then
+      DeleteFile(SModsDir+'\'+'{#JarName14}.jar');
     // Canvas
     if FileExists(SModsDir+'\'+'{#JarName10}.jar') then
       DeleteFile(SModsDir+'\'+'{#JarName10}.jar');
@@ -431,14 +436,14 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
 ; Sodium
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium; Flags: ignoreversion
+; iris
+Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium\Iris; Flags: ignoreversion
 ; Canvas
-Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
+;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; phosphor mod
 Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\phosphor; Flags: ignoreversion
-; lithium mod
-;Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\Lithium; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

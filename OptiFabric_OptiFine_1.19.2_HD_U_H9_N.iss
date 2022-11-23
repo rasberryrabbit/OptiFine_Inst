@@ -18,8 +18,8 @@
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName14 'iris-mc1.19.2-1.4.0'
 
-#define ZipName1 'Builders_QOL_Shaders_V2.8.2'
-#define ZipName2 'Builders_Modded_Shaders_V2.8.3'
+#define ZipName1 'Builders_QOL_Shaders_V2.9.0'
+#define ZipName2 'Builders_Modded_Shaders_V2.9.0'
 #define ZipName3 'SEUS-Renewed-v1.0.1'
 #define ZipName4 'VanillaPlus_v3.0a'
 #define ZipName5 'Nostalgia_v3.1'

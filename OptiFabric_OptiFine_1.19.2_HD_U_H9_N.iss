@@ -33,7 +33,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName4} Installer {#CurrDate}
-AppVersion=0.92
+AppVersion=0.93
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName2}_QOL_NV_{#CurrDate}
@@ -87,12 +87,15 @@ WorldDesc=World Map
 korean.WorldDesc=월드맵
 PerfMod=Performance
 korean.PerfMod=성능
+DeleteMods=Delete previous Mods
+korean.DeleteMods=이전 모드 지우기
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
 Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 
 [Components]
+Name: "DeleteOldMod"; Description: "{cm:DeleteMods}"; Types: standard custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: standard custom; Flags: exclusive
@@ -342,6 +345,11 @@ begin
   end else
   if CurPageID=wpInstalling then
   begin
+    if WizardIsComponentSelected('DeleteOldMod') then 
+    begin
+      DelTree(SModsDir+'\*.jar',False,True,False);
+    end;
+    {
     // optifine
     if FileExists(SModsDir+'\'+'{#JarName2}.jar') then
       DeleteFile(SModsDir+'\'+'{#JarName2}.jar');
@@ -356,6 +364,7 @@ begin
     // Canvas
     if FileExists(SModsDir+'\'+'{#JarName10}.jar') then
       DeleteFile(SModsDir+'\'+'{#JarName10}.jar');
+    }
   end;
 end;
 

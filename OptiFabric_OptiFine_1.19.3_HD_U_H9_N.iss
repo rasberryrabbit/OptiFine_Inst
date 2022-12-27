@@ -18,13 +18,11 @@
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName14 'iris-mc1.19.3-1.4.6'
 
-#define ZipName1 'Builders_QOL_Shaders_V2.9.0'
-#define ZipName2 'Builders_Modded_Shaders_V2.9.0'
-#define ZipName3 'SEUS-Renewed-v1.0.1'
-#define ZipName4 'VanillaPlus_v3.0a'
-#define ZipName5 'Nostalgia_v3.1'
-#define ZipName6 'Sildur''s+Vibrant+Shaders+v1.41+Lite'
-#define ZipName7 'BSL_v8.2.01'
+#define ZipName1 'SEUS-Renewed-v1.0.1'
+#define ZipName2 'VanillaPlus_v3.0b'
+#define ZipName3 'Sildur''s+Vibrant+Shaders+v1.41+Lite'
+#define ZipName4 'MakeUp-UltraFast-8.6g'
+#define ZipName5 'BSL_v8.2.01'
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
@@ -35,7 +33,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName1} {#JarName4} Installer {#CurrDate}
-AppVersion=0.94
+AppVersion=0.95
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName14}_QOL_NV_{#CurrDate}
@@ -116,13 +114,11 @@ Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
 Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
-Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: custom;
+Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: custom;
-Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
-Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: custom;
-Name: "Shader\Zip5"; Description: "{#ZipName5}"; Types: custom;
-Name: "Shader\Zip6"; Description: "{#ZipName6}"; Types: standard custom;
-;Name: "Shader\Zip7"; Description: "{#ZipName7}"; Types: standard custom;
+Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: custom;
+Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
+;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
 
 ;Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
@@ -468,9 +464,7 @@ Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zi
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
 Source: "{#ZipName3}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip3; Flags: ignoreversion
 Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip4; Flags: ignoreversion
-Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion
-Source: "{#ZipName6}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip6; Flags: ignoreversion
-;Source: "{#ZipName7}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip7; Flags: ignoreversion
+;Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile}";

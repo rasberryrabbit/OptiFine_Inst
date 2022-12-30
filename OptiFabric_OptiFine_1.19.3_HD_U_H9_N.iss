@@ -11,9 +11,9 @@
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
-#define JarName9 'sodium-fabric-mc1.19.3-0.4.6+build.20'
+#define JarName9 'sodium-fabric-mc1.19.3-0.4.7+build.21'
 #define JarName10 'canvas-fabric-mc119-1.0.2503'
-#define JarName11 'BetterF3-5.0.0-Fabric-1.19.3-pre2'
+#define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName12 'XaerosWorldMap_1.28.4_Forge_1.19.3'
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName14 'iris-mc1.19.3-1.4.6'
@@ -36,7 +36,7 @@ AppName={#JarName1} {#JarName4} Installer {#CurrDate}
 AppVersion=0.95
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
-OutputBaseFilename=Fabric_{#JarName14}_QOL_NV_{#CurrDate}
+OutputBaseFilename=Fabric_{#JarName14}_{#CurrDate}
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no

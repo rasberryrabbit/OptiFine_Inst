@@ -6,7 +6,7 @@
 #define JarName1 'fabric-installer-0.11.1'
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
-#define JarName4 'fabric-api-0.68.1+1.19.3'
+#define JarName4 'fabric-api-0.70.0+1.19.3'
 #define JarName5 'Xaeros_Minimap_22.16.3_Forge_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'

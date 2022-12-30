@@ -101,7 +101,7 @@ Name: "DeleteOldMod"; Description: "{cm:DeleteMods}"; Types: standard custom
 Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
-Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
+;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
 ;Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
@@ -112,8 +112,8 @@ Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: cust
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
 Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
-Name: "Perf\lithium"; Description: "{#JarName15}"; Types: custom; Flags: exclusive
-Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
+Name: "Perf\lithium"; Description: "{#JarName15}"; Types: custom;
+Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom;
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
@@ -436,9 +436,9 @@ end;
 ; Install Fabric
 Source: "{#JarName1}.jar"; DestDir: "{tmp}"; Flags: ignoreversion
 ; Mod OptiFabric
-Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+;Source: "{#JarName3}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 ; Mod OptiFine
-Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
+;Source: "{#JarName2}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\OptiFine; Flags: ignoreversion
 ; Mod Fabric API
 Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Components: FabricAPI; Flags: ignoreversion
 ; Mod minimap

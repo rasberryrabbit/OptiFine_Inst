@@ -18,6 +18,8 @@
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName14 'iris-mc1.19.3-1.4.6'
 #define JarName15 'lithium-fabric-mc1.19.3-0.10.4'
+#define JarName16 'sodium-fabric-mc1.19.3-0.4.7+build.21'
+#define JarName17 'iris-mc1.19.3-1.5.0-rc.2'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'VanillaPlus_v3.0b'
@@ -102,8 +104,12 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
-Name: "Renderer\Sodium"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
+
+Name: "Renderer\Sodium2"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
+Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom;
+
 ;Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
@@ -451,10 +457,14 @@ Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; F
 Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
 ; Windowed FullScreen
 ;Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
-; Sodium
-Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium; Flags: ignoreversion
-; iris
-Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium\Iris; Flags: ignoreversion
+; Sodium new
+Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1; Flags: ignoreversion
+; iris new
+Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\Iris; Flags: ignoreversion
+; Sodium old
+Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
+; iris old
+Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ; Canvas
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod

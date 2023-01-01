@@ -19,7 +19,7 @@
 #define JarName14 'iris-mc1.19.3-1.4.6'
 #define JarName15 'lithium-fabric-mc1.19.3-0.10.4'
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.7+build.21'
-#define JarName17 'iris-mc1.19.3-1.5.0-rc.3'
+#define JarName17 'iris-mc1.19.3-1.5.0'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'VanillaPlus_v3.0b'

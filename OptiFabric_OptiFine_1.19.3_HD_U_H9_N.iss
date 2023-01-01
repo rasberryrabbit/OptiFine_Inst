@@ -105,8 +105,8 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 
-Name: "Renderer\Sodium2"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
+;Name: "Renderer\Sodium2"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
+;Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
 Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom;
 
@@ -462,9 +462,9 @@ Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ; iris new
 Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\Iris; Flags: ignoreversion
 ; Sodium old
-Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
+;Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
 ; iris old
-Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
+;Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ; Canvas
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod

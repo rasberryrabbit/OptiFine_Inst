@@ -6,15 +6,15 @@
 #define JarName1 'fabric-installer-0.11.1'
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
-#define JarName4 'fabric-api-0.70.0+1.19.3'
-#define JarName5 'Xaeros_Minimap_22.16.3_Forge_1.19.3'
+#define JarName4 'fabric-api-0.71.0+1.19.3'
+#define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
 #define JarName9 'sodium-fabric-mc1.19.3-0.4.6+build.20'
 #define JarName10 'canvas-fabric-mc119-1.0.2503'
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
-#define JarName12 'XaerosWorldMap_1.28.4_Forge_1.19.3'
+#define JarName12 'XaerosWorldMap_1.28.7_Fabric_1.19.3'
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName14 'iris-mc1.19.3-1.4.6'
 #define JarName15 'lithium-fabric-mc1.19.3-0.10.4'
@@ -23,7 +23,7 @@
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'VanillaPlus_v3.0b'
-#define ZipName3 'Sildur''s+Vibrant+Shaders+v1.41+Lite'
+#define ZipName3 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
 
@@ -117,19 +117,19 @@ Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
-Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
-Name: "Perf\lithium"; Description: "{#JarName15}"; Types: custom;
-Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom;
+;Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
+;Name: "Perf\lithium"; Description: "{#JarName15}"; Types: custom;
+;Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom;
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
-Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: custom;
-Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: custom;
+;Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: custom;
+Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
 
 ;Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
-Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
+;Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 
 [Code]
@@ -452,7 +452,7 @@ Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Minim
 ; Mod worldmap
 Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worldmap; Flags: ignoreversion
 ; Simple Voice chat
-Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
+;Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
 Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
 ; Windowed FullScreen
@@ -470,12 +470,12 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; phosphor mod
-Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\phosphor; Flags: ignoreversion
+;Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\phosphor; Flags: ignoreversion
 ; lithium mod
-Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\lithium; Flags: ignoreversion
+;Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\lithium; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
-Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
+;Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
 Source: "{#ZipName3}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip3; Flags: ignoreversion
 Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip4; Flags: ignoreversion
 ;Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion

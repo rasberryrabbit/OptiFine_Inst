@@ -117,10 +117,6 @@ Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
-;Name: "Perf"; Description: "{cm:PerfMod}"; Types: custom
-;Name: "Perf\lithium"; Description: "{#JarName15}"; Types: custom;
-;Name: "Perf\phosphor"; Description: "{#JarName13}"; Types: custom;
-
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 ;Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: custom;
@@ -469,10 +465,6 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
-; phosphor mod
-;Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\phosphor; Flags: ignoreversion
-; lithium mod
-;Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: Perf\lithium; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 ;Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

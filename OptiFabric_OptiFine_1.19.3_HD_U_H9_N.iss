@@ -22,7 +22,7 @@
 #define JarName17 'iris-mc1.19.3-1.5.1'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
-#define ZipName2 'VanillaPlus_v3.0b'
+#define ZipName2 'Builders_Modded_Shaders_V2.9.0'
 #define ZipName3 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
@@ -119,7 +119,7 @@ Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
-;Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: custom;
+Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
 Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
@@ -467,7 +467,7 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
-;Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
+Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
 Source: "{#ZipName3}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip3; Flags: ignoreversion
 Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip4; Flags: ignoreversion
 ;Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion

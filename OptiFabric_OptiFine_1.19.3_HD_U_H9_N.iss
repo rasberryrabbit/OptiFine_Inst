@@ -4,20 +4,26 @@
 #define CurrDate GetDateTimeString('yymmddhh', '', '')
 
 #define JarName1 'fabric-installer-0.11.1'
+; optifine
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
-#define JarName4 'fabric-api-0.71.0+1.19.3'
+
+#define JarName4 'fabric-api-0.72.0+1.19.3'
 #define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
 #define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
+; old version
 #define JarName9 'sodium-fabric-mc1.19.3-0.4.6+build.20'
+#define JarName14 'iris-mc1.19.3-1.4.6'
 #define JarName10 'canvas-fabric-mc119-1.0.2503'
+
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName12 'XaerosWorldMap_1.28.7_Fabric_1.19.3'
+; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
-#define JarName14 'iris-mc1.19.3-1.4.6'
 #define JarName15 'lithium-fabric-mc1.19.3-0.10.4'
+; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
 

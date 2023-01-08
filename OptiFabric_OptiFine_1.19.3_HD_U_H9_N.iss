@@ -369,28 +369,12 @@ begin
     begin
       DelTree(SModsDir+'\*.jar',False,True,False);
     end;
-    {
-    // optifine
-    if FileExists(SModsDir+'\'+'{#JarName2}.jar') then
-      DeleteFile(SModsDir+'\'+'{#JarName2}.jar');
-    if FileExists(SModsDir+'\'+'{#JarName3}.jar') then
-      DeleteFile(SModsDir+'\'+'{#JarName3}.jar');
-    // sodium
-    if FileExists(SModsDir+'\'+'{#JarName9}.jar') then
-      DeleteFile(SModsDir+'\'+'{#JarName9}.jar');
-    // iris
-    if FileExists(SModsDir+'\'+'{#JarName14}.jar') then
-      DeleteFile(SModsDir+'\'+'{#JarName14}.jar');
-    // Canvas
-    if FileExists(SModsDir+'\'+'{#JarName10}.jar') then
-      DeleteFile(SModsDir+'\'+'{#JarName10}.jar');
-    }
   end;
 end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName1} {#JarName4} Installer {#CurrDate}'+#13#10;
+  Result:='{#JarName9} {#JarName14} Installer {#CurrDate}'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then

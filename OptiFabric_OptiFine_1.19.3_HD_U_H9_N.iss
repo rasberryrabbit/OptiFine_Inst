@@ -19,6 +19,7 @@
 #define JarName10 'canvas-fabric-mc119-1.0.2503'
 
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
+#define JarName18 'modmenu-5.0.2'
 #define JarName12 'XaerosWorldMap_1.28.7_Fabric_1.19.3'
 ; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
@@ -471,6 +472,7 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
+Source: "{#JarName18}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

@@ -126,6 +126,9 @@ Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
+Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
+Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom
+
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -136,7 +139,7 @@ Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 ;Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
-Name: "ModMenu"; Description: "{cm:ModMenu} {#JarName18}"; Types: standard custom;
+Name: "ModMenu"; Description: "{cm:ModMenu} {#JarName18}"; Types: custom;
 
 [Code]
 const
@@ -459,6 +462,8 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
+; performance
+Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\phosphor; Flags: ignoreversion
 ; Mod Menu
 Source: "{#JarName18}.jar"; DestDir: "{code:GetOutDir}"; Components: ModMenu; Flags: ignoreversion
 ; Shaders

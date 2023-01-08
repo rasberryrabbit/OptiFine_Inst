@@ -99,6 +99,8 @@ PerfMod=Performance
 korean.PerfMod=성능
 DeleteMods=Delete previous Mods
 korean.DeleteMods=이전 모드 지우기
+ModMenu=ModMenu
+korean.ModMenu=모드 메뉴
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -134,6 +136,7 @@ Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 ;Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
+Name: "ModMenu"; Description: "{cm:ModMenu} {#JarName18}"; Types: standard custom;
 
 [Code]
 const
@@ -472,7 +475,8 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
-Source: "{#JarName18}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
+; Mod Menu
+Source: "{#JarName18}.jar"; DestDir: "{code:GetOutDir}"; Components: ModMenu; Flags: ignoreversion
 ; Shaders
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion

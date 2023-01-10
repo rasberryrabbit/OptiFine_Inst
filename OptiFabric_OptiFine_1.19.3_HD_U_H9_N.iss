@@ -23,7 +23,7 @@
 #define JarName12 'XaerosWorldMap_1.28.7_Fabric_1.19.3'
 ; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
-#define JarName15 'lithium-fabric-mc1.19.3-0.10.4'
+#define JarName15 'starlight-1.1.1+fabric.ae22326'
 ; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
@@ -101,6 +101,8 @@ DeleteMods=Delete previous Mods
 korean.DeleteMods=이전 모드 지우기
 ModMenu=ModMenu
 korean.ModMenu=모드 메뉴
+phosphor=Prevent chuck lack
+korean.phosphor=청크 랙 방지
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -127,7 +129,8 @@ Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: cust
 Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
-Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom
+Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
+Name: "PerfMod\starlight"; Description: "{#JarName15}"; Types: standard custom; Flags: exclusive
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
@@ -464,6 +467,7 @@ Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; performance
 Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\phosphor; Flags: ignoreversion
+Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\starlight; Flags: ignoreversion
 ; Mod Menu
 Source: "{#JarName18}.jar"; DestDir: "{code:GetOutDir}"; Components: ModMenu; Flags: ignoreversion
 ; Shaders

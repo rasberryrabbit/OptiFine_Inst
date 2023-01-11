@@ -12,11 +12,6 @@
 #define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
-#define JarName8 'WindowedFullscreen-1.18-fabric-1.0.1'
-; old version
-#define JarName9 'sodium-fabric-mc1.19.3-0.4.6+build.20'
-#define JarName14 'iris-mc1.19.3-1.4.6'
-#define JarName10 'canvas-fabric-mc119-1.0.2503'
 
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName18 'modmenu-5.0.2'
@@ -24,6 +19,8 @@
 ; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName15 'starlight-1.1.1+fabric.ae22326'
+; memory leak fix
+#define JarName10 'memoryleakfix-1.19.3-0.7.0'
 ; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
@@ -42,7 +39,7 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName1} {#JarName4} Installer {#CurrDate}
+AppName={#JarName17}|{#JarName16}|{#CurrDate}
 AppVersion=0.95
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
@@ -50,7 +47,7 @@ OutputBaseFilename=Fabric_{#JarName17}_{#CurrDate}
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
-VersionInfoTextVersion={#JarName1} {#JarName4}
+VersionInfoTextVersion={#JarName17}|{#JarName16}
 DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
@@ -73,14 +70,10 @@ VoiceDesc=Simple Voice Chat
 korean.VoiceDesc=간단 보이스 챗(음성 채팅)
 CocoaInput=CocoaInput
 korean.CocoaInput=한글 입력
-WindowedFull=Windowed Fullscreen
-korean.WindowedFull=전체창 보기
 Sodium=Sodium
 korean.Sodium=소듐
 Iris=Iris
 korean.Iris=아이리스
-Canvasmod=Canvas
-korean.Canvasmod=Canvas
 Render=Renderer
 korean.Render=렌더러
 standard=standard
@@ -101,8 +94,8 @@ DeleteMods=Delete previous Mods
 korean.DeleteMods=이전 모드 지우기
 ModMenu=ModMenu
 korean.ModMenu=모드 메뉴
-phosphor=Prevent chuck lack
-korean.phosphor=청크 랙 방지
+MemoryFix=Memory leak Fix
+korean.MemoryFix=메모리 누수 방지
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -116,12 +109,9 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 
-;Name: "Renderer\Sodium2"; Description: "{cm:Sodium} {#JarName9}"; Types: standard custom; Flags: exclusive
-;Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris} {#JarName14}"; Types: standard custom;
 Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: standard custom; Flags: exclusive
 Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom;
 
-;Name: "Renderer\Canvas"; Description: "{cm:Canvasmod} {#JarName10}"; Types: custom; Flags: exclusive
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
@@ -132,6 +122,9 @@ Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
 Name: "PerfMod\starlight"; Description: "{#JarName15}"; Types: standard custom; Flags: exclusive
 
+Name: "MemoryFix"; Description: "{cm:MemoryFix}"; Types: custom
+Name: "MemoryFix\memoryleakfix"; Description: "{#JarName10}"; Types: standard custom
+
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
@@ -139,7 +132,6 @@ Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
 
-;Name: "WindowedFull"; Description: "{cm:WindowedFull} {#JarName8}"; Types: custom
 ;Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 Name: "ModMenu"; Description: "{cm:ModMenu} {#JarName18}"; Types: custom;
@@ -380,7 +372,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName9} {#JarName14} Installer {#CurrDate}'+#13#10;
+  Result:='{#JarName17} {#JarName16} {#CurrDate}'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
@@ -451,18 +443,12 @@ Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worl
 ;Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
 Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
-; Windowed FullScreen
-;Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: WindowedFull; Flags: ignoreversion
-; Sodium new
+; Sodium
 Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1; Flags: ignoreversion
-; iris new
+; iris
 Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\Iris; Flags: ignoreversion
-; Sodium old
-;Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
-; iris old
-;Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
-; Canvas
-;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Canvas; Flags: ignoreversion
+; memory leak fix
+Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod
 Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; performance

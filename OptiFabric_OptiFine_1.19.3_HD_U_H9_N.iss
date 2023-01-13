@@ -24,6 +24,7 @@
 ; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
+#define JarName14 'iris-mc1.19.3-1.6.0-exp.1-cd190973-dirty'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builders_Modded_Shaders_V2.9.0'
@@ -74,6 +75,8 @@ Sodium=Sodium
 korean.Sodium=소듐
 Iris=Iris
 korean.Iris=아이리스
+IrisTest=Iris Test
+korean.IrisTest=아이리스 테스트
 Render=Renderer
 korean.Render=렌더러
 standard=standard
@@ -110,7 +113,8 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 
 Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom;
+Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium1\IrisTest"; Description: "{cm:IrisTest} {#JarName14}"; Types: custom; Flags: exclusive
 
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
@@ -447,6 +451,8 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1; Flags: ignoreversion
 ; iris
 Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\Iris; Flags: ignoreversion
+; Iris Test
+Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\IrisTest; Flags: ignoreversion
 ; memory leak fix
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod

@@ -24,7 +24,7 @@
 ; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
-#define JarName14 'iris-mc1.19.3-1.6.0-exp.1-cd190973-dirty'
+#define JarName14 'iris-mc1.19.3-1.6.0-exp.2'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builders_Modded_Shaders_V2.9.0'
@@ -41,7 +41,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
 AppName={#JarName17}|{#JarName16}|{#CurrDate}
-AppVersion=0.95
+AppVersion=0.96
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#JarName17}_{#CurrDate}
@@ -76,7 +76,7 @@ korean.Sodium=소듐
 Iris=Iris
 korean.Iris=아이리스
 IrisTest=Iris Test
-korean.IrisTest=아이리스 테스트
+korean.IrisTest=아이리스 시험판
 Render=Renderer
 korean.Render=렌더러
 standard=standard

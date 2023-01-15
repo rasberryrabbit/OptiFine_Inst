@@ -24,7 +24,7 @@
 ; iris shader
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
-#define JarName14 'iris-mc1.19.3-1.6.0-exp.2'
+#define JarName14 'iris-mc1.19.3-1.6.0-exp.3'
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builders_Modded_Shaders_V2.9.0'

@@ -8,7 +8,7 @@
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
 
-#define JarName4 'fabric-api-0.72.0+1.19.3'
+#define JarName4 'fabric-api-0.73.2+1.19.3'
 #define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
@@ -25,6 +25,10 @@
 #define JarName16 'sodium-fabric-mc1.19.3-0.4.8+build.22'
 #define JarName17 'iris-mc1.19.3-1.5.1'
 #define JarName8 'iris-mc1.19.3-1.5.1-620a6373-dirty'
+; iris shader for snapshot
+#define JarName9 'sodium-fabric-mc1.19.3-0.4.9+build.23'
+#define JarName14 'iris-mc1.19.3-1.5.2'
+
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builders_Modded_Shaders_V2.9.0'
@@ -40,15 +44,15 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName17}|{#JarName16}|{#CurrDate}
+AppName={#JarName14}|{#JarName9}|{#CurrDate}
 AppVersion=0.96
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
-OutputBaseFilename=Fabric_{#JarName17}_{#CurrDate}
+OutputBaseFilename=Fabric_{#JarName14}_{#CurrDate}
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
-VersionInfoTextVersion={#JarName17}|{#JarName16}
+VersionInfoTextVersion={#JarName14}|{#JarName9}
 DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
@@ -73,10 +77,14 @@ CocoaInput=CocoaInput
 korean.CocoaInput=한글 입력
 Sodium=Sodium
 korean.Sodium=소듐
+Sodium2=Sodium
+korean.Sodium2=소듐
 Iris=Iris
 korean.Iris=아이리스
-IrisTest=Iris Test
-korean.IrisTest=아이리스 시험판
+Iris2=Iris
+korean.Iris2=아이리스
+IrisTest=Iris
+korean.IrisTest=아이리스
 Render=Renderer
 korean.Render=렌더러
 standard=standard
@@ -111,11 +119,13 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
-
-Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: standard custom; Flags: exclusive
-;Name: "Renderer\Sodium1\IrisTest"; Description: "{cm:IrisTest} {#JarName14}"; Types: custom; Flags: exclusive
-Name: "Renderer\Sodium1\IrisTest1"; Description: "{cm:IrisTest} {#JarName8}"; Types: custom; Flags: exclusive
+; sodium + iris for snapshot
+Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom
+; sodium + iris
+Name: "Renderer\Sodium1"; Description: "{cm:Sodium} {#JarName16}"; Types: custom; Flags: exclusive
+Name: "Renderer\Sodium1\Iris"; Description: "{cm:Iris} {#JarName17}"; Types: custom
+;Name: "Renderer\Sodium1\IrisTest1"; Description: "{cm:IrisTest} {#JarName8}"; Types: custom; Flags: exclusive
 
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
@@ -377,7 +387,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName17} {#JarName16} {#CurrDate}'+#13#10;
+  Result:='{#JarName14} {#JarName9} {#CurrDate}'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
@@ -452,10 +462,11 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1; Flags: ignoreversion
 ; iris
 Source: "{#JarName17}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\Iris; Flags: ignoreversion
-; Iris Test
-;Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\IrisTest; Flags: ignoreversion
 ; Iris Test1
-Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\IrisTest1; Flags: ignoreversion
+;Source: "{#JarName8}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium1\IrisTest1; Flags: ignoreversion
+; Sodium + iris for snapshot
+Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
+Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ; memory leak fix
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod

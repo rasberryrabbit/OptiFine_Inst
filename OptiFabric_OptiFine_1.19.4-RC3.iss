@@ -25,6 +25,8 @@
 #define JarName9 'sodium-fabric-mc1.19.4-rc1-0.4.10rev.ced3b01'
 #define JarName14 'iris-mc1.19.4-rc2-1.5.2'
 
+#define MCVersion '1.19.4-rc3'
+
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builders_Modded_Shaders_V2.9.0'
@@ -40,15 +42,15 @@
 ; Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{949CFF8B-F22F-4811-BE42-2A10D81862D0}
-AppName={#JarName14}|{#JarName9}|{#CurrDate}
+AppName={#MCVersion}|{#JarName14}|{#JarName9}|{#CurrDate}
 AppVersion=0.96
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
-OutputBaseFilename=Fabric_{#JarName14}_{#CurrDate}
+OutputBaseFilename=Fabric_{#MCVersion}_{#JarName14}_{#CurrDate}
 Compression=lzma2/max
 SolidCompression=yes
 Uninstallable=no
-VersionInfoTextVersion={#JarName14}|{#JarName9}
+VersionInfoTextVersion={#MCVersion}|{#JarName14}|{#JarName9}
 DefaultDirName={#DefaultRuntime}\jre-x64\bin
 PrivilegesRequired=lowest
 EnableDirDoesntExistWarning=False
@@ -379,7 +381,7 @@ end;
 
 function UpdateReadyMemo(Space, NewLine, MemoUserInfoInfo, MemoDirInfo, MemoTypeInfo, MemoComponentsInfo, MemoGroupInfo, MemoTasksInfo: String): String;
 begin
-  Result:='{#JarName14} {#JarName9} {#CurrDate}'+#13#10;
+  Result:='{#MCVersion} {#JarName14} {#JarName9} {#CurrDate}'+#13#10;
   SMCDir:=MCDirCheck;
   Result:=Result+SMCDir;
   if SMCDir<>'' then
@@ -470,5 +472,5 @@ Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zi
 ;Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion
 
 [Run]
-Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile} client -snapshot -mcversion 1.19.4-rc2 ";
+Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile} client -snapshot -mcversion {#MCVersion} ";
 

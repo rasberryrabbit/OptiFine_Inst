@@ -11,7 +11,7 @@
 #define JarName4 'fabric-api-0.75.3+1.19.4'
 #define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
-#define JarName7 'CocoaInput-1.19.3-fabric-4.2.0-EXPERIMENTAL'
+#define JarName7 'CocoaInput-1.19.4-fabric-4.2.1-EXPERIMENTAL'
 
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName18 'modmenu-5.0.2'
@@ -113,7 +113,7 @@ Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 [Components]
 Name: "DeleteOldMod"; Description: "{cm:DeleteMods}"; Types: standard custom
 
-;Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
+Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard custom
 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
@@ -451,7 +451,7 @@ Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Components: FabricAPI; F
 ; Simple Voice chat
 ;Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
-;Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
+Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
 ; Sodium + iris
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
 Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion

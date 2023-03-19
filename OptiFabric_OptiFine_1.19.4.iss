@@ -9,13 +9,13 @@
 #define JarName3 'optifabric-1.13.16'
 
 #define JarName4 'fabric-api-0.75.3+1.19.4'
-#define JarName5 'Xaeros_Minimap_22.17.0_Fabric_1.19.3'
+#define JarName5 'Xaeros_Minimap_23.3.1_Fabric_1.19.4'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.4-fabric-4.2.1-EXPERIMENTAL'
 
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName18 'modmenu-5.0.2'
-#define JarName12 'XaerosWorldMap_1.28.7_Fabric_1.19.3'
+#define JarName12 'XaerosWorldMap_1.29.2_Fabric_1.19.4'
 ; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName15 'starlight-1.1.1+fabric.ae22326'
@@ -29,7 +29,7 @@
 
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'
-#define ZipName2 'Builders_Modded_Shaders_V2.9.0'
+#define ZipName2 'Builder''s Modded Shaders V2.10.0'
 #define ZipName3 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
@@ -123,9 +123,9 @@ Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: st
 
 ;Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
-;Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
-;Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
-;Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
+Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
+Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
+Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
@@ -445,9 +445,9 @@ Source: "{#JarName1}.jar"; DestDir: "{tmp}"; Flags: ignoreversion
 ; Mod Fabric API
 Source: "{#JarName4}.jar"; DestDir: "{code:GetOutDir}"; Components: FabricAPI; Flags: ignoreversion
 ; Mod minimap
-;Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Minimap; Flags: ignoreversion
+Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Minimap; Flags: ignoreversion
 ; Mod worldmap
-;Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worldmap; Flags: ignoreversion
+Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worldmap; Flags: ignoreversion
 ; Simple Voice chat
 ;Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput

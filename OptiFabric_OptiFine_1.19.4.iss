@@ -8,7 +8,7 @@
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
 
-#define JarName4 'fabric-api-0.75.3+1.19.4'
+#define JarName4 'fabric-api-0.78.0+1.19.4'
 #define JarName5 'Xaeros_Minimap_23.3.1_Fabric_1.19.4'
 #define JarName6 'voicechat-fabric-1.19.3-2.3.22'
 #define JarName7 'CocoaInput-1.19.4-fabric-4.2.1-EXPERIMENTAL'
@@ -23,7 +23,7 @@
 #define JarName10 'memoryleakfix-1.19.3-0.7.0'
 ; iris shader
 #define JarName9 'sodium-fabric-mc1.19.4-0.4.10+build.24'
-#define JarName14 'iris-mc1.19.4-1.5.2'
+#define JarName14 'iris-mc1.19.4-1.6.1'
 
 #define MCVersion '1.19.4'
 

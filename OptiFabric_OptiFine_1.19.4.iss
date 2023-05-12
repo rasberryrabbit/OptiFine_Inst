@@ -8,22 +8,23 @@
 #define JarName2 'OptiFine_1.19.2_HD_U_H9'
 #define JarName3 'optifabric-1.13.16'
 
-#define JarName4 'fabric-api-0.78.0+1.19.4'
-#define JarName5 'Xaeros_Minimap_23.3.1_Fabric_1.19.4'
-#define JarName6 'voicechat-fabric-1.19.3-2.3.22'
+#define JarName4 'fabric-api-0.80.0+1.19.4'
+#define JarName5 'Xaeros_Minimap_23.4.0_Fabric_1.19.4'
+#define JarName6 'voicechat-fabric-1.19.4-2.4.6'
 #define JarName7 'CocoaInput-1.19.4-fabric-4.2.1-EXPERIMENTAL'
 
 #define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
 #define JarName18 'modmenu-5.0.2'
-#define JarName12 'XaerosWorldMap_1.29.2_Fabric_1.19.4'
+#define JarName12 'XaerosWorldMap_1.30.0_Fabric_1.19.4'
 ; performance
 #define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName15 'starlight-1.1.1+fabric.ae22326'
 ; memory leak fix
-#define JarName10 'memoryleakfix-1.19.3-0.7.0'
+#define JarName10 'memoryleakfix-fabric-1.17+-1.0.0'
 ; iris shader
-#define JarName9 'sodium-fabric-mc1.19.4-0.4.10+build.24'
-#define JarName14 'iris-mc1.19.4-1.6.1'
+#define JarName9 'sodium-fabric-mc1.19.4-0.4.11+build.26'
+#define JarName16 'sodium-fabric-mc1.19.4-0.4.11+build.26-api'
+#define JarName14 'iris-mc1.19.4-1.6.3'
 
 #define MCVersion '1.19.4'
 
@@ -119,7 +120,8 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 ; sodium + iris 
 Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom
+Name: "Renderer\Sodium2\API"; Description: "{cm:Sodium2} {#JarName16}"; Types: standard custom;
+Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom;
 
 ;Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
@@ -131,8 +133,8 @@ Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
 Name: "PerfMod\starlight"; Description: "{#JarName15}"; Types: standard custom; Flags: exclusive
 
-;Name: "MemoryFix"; Description: "{cm:MemoryFix}"; Types: custom
-;Name: "MemoryFix\memoryleakfix"; Description: "{#JarName10}"; Types: standard custom
+Name: "MemoryFix"; Description: "{cm:MemoryFix}"; Types: custom
+Name: "MemoryFix\memoryleakfix"; Description: "{#JarName10}"; Types: standard custom
 
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
 Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
@@ -141,7 +143,7 @@ Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
 ;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
 
-;Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
+Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
 ;Name: "ModMenu"; Description: "{cm:ModMenu} {#JarName18}"; Types: custom;
 
@@ -449,14 +451,15 @@ Source: "{#JarName5}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Minim
 ; Mod worldmap
 Source: "{#JarName12}.jar"; DestDir: "{code:GetOutDir}"; Components: MapMod\Worldmap; Flags: ignoreversion
 ; Simple Voice chat
-;Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
+Source: "{#JarName6}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceChat; Flags: ignoreversion
 ; CocoaInput
 Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; Flags: ignoreversion
 ; Sodium + iris
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
+Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\API; Flags: ignoreversion
 Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ; memory leak fix
-;Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
+Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod
 ;Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; performance

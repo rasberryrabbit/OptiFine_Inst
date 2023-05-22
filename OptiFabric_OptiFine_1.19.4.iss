@@ -13,7 +13,7 @@
 #define JarName6 'voicechat-fabric-1.19.4-2.4.6'
 #define JarName7 'CocoaInput-1.19.4-fabric-4.2.1-EXPERIMENTAL'
 
-#define JarName11 'BetterF3-5.1.0-Fabric-1.19.3'
+#define JarName11 'BetterF3-6.0.1-Fabric-1.19.4'
 #define JarName18 'modmenu-5.0.2'
 #define JarName12 'XaerosWorldMap_1.30.0_Fabric_1.19.4'
 ; performance
@@ -123,7 +123,7 @@ Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standa
 Name: "Renderer\Sodium2\API"; Description: "{cm:Sodium2} {#JarName16}"; Types: standard custom;
 Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom;
 
-;Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
+Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
 Name: "MapMod\Worldmap"; Description: "{cm:WorldDesc} {#JarName12}"; Types: custom
@@ -461,7 +461,7 @@ Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\So
 ; memory leak fix
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod
-;Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
+Source: "{#JarName11}.jar"; DestDir: "{code:GetOutDir}"; Components: BetterF3; Flags: ignoreversion
 ; performance
 Source: "{#JarName13}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\phosphor; Flags: ignoreversion
 Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\starlight; Flags: ignoreversion

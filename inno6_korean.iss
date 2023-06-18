@@ -4,6 +4,7 @@
 
 #define MyAppName "Inno setup 6 Unofficial Korean Language Installer"
 #define MyAppVersion "1.0"
+#define default_path_dll "{autopf32}\Inno Setup 6"
 #define default_path "{autopf32}\Inno Setup 6\Languages"
 
 [Setup]
@@ -74,7 +75,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Components]
 Name: "github"; Description: "From Github"; Types: full;
+Name: "ISCrypt"; Description: "Encryption"; Types: full;
 
 [Files]
 Source: "Korean.isl"; DestDir: "{tmp}\local"; Flags: ignoreversion;
 Source: "{code:GetFilePath}"; DestDir: "{#default_path}"; Flags: ignoreversion external;
+Source: "ISCrypt.dll"; DestDir: "{#default_path_dll}"; Flags: ignoreversion;

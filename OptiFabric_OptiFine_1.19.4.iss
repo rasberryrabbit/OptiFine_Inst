@@ -24,9 +24,10 @@
 ; iris shader
 #define JarName9 'sodium-fabric-mc1.19.4-0.4.11+build.26'
 #define JarName16 'sodium-fabric-mc1.19.4-0.4.11+build.26-api'
-#define JarName14 'iris-mc1.19.4-1.6.3'
+#define JarName14 'iris-mc1.19.4-1.6.4'
 
 #define MCVersion '1.19.4'
+#define MCVersionNew '1.20'
 
 
 #define ZipName1 'SEUS-Renewed-v1.0.1'

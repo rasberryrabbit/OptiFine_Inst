@@ -37,6 +37,7 @@
 
 #define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
 #define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
+#define JavaWin '{userappdata}\Local\Packages\Microsoft.4297127D64EC6_8wekyb3d8bbwe\LocalCache\Local\runtime\'
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -44,7 +45,7 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{55E52D9A-F129-498C-BFD2-D7BD042CBD79}
 AppName={#MCVersion}|{#JarName14}|{#JarName9}|{#CurrDate}
-AppVersion=0.99
+AppVersion=0.99a
 ;AppVerName=OptiFine Installer {#JarName2}
 AppPublisher=anon
 OutputBaseFilename=Fabric_{#MCVersion}_{#JarName14}_{#CurrDate}
@@ -153,7 +154,7 @@ const
   MCPFDir='{userappdata}\.minecraft\';
   ModsDir='Mods';
   NewMCDir='{#SetupSetting("DefaultDirName")}';
-  MaxFindDeep=10;
+  MaxFindDeep=16;
 
 var
   SMCDir: string;
@@ -307,9 +308,12 @@ begin
         // use launcher folder
         if ST<>'' then
           Result:=FindFilePath(ST,'java.exe');
-        //Result:=ExpandConstant('{#DefaultRuntime}{#JavaBeta}');
         if Result='' then
           Result:=FindFilePath(ExpandConstant('{#DefaultRuntime}'),'java.exe');
+        if Result='' then
+          Result:=FindFilePath(ExpandConstant('{#JavaWin}'),'java.exe');
+        if Result='' then
+          Result:=FindFilePath(ExpandConstant('{userappdata}'),'java.exe');
       end;
     end;
 end;

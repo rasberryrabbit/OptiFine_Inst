@@ -35,7 +35,7 @@
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
 
-#define DefaultRuntime '{commonpf32}\Minecraft Launcher\runtime'
+#define DefaultRuntime '{commonpf32}\Minecraft Launcher'
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -153,6 +153,7 @@ const
   ModsDir='Mods';
   NewMCDir='{#SetupSetting("DefaultDirName")}';
   MaxFindDeep=16;
+  MaxFindFolder=5000;
 
 var
   SMCDir: string;
@@ -178,14 +179,13 @@ begin
   if bf then begin
     try
     while bf do begin
-      // limit count
-      if j>700 then
-        break;
       // skip '.' and '..'
       if (FindRec[FindDeep].Name<>'.') and (FindRec[FindDeep].Name<>'..') then begin
-        Inc(j);
         if FindRec[FindDeep].Attributes and FILE_ATTRIBUTE_DIRECTORY<>0 then begin
           // folder
+          Inc(j);
+          if j>MaxFindFolder then
+            break;
           if FindDeep<MaxFindDeep then begin
             cPath:='';
             for i:=0 to FindDeep do
@@ -287,18 +287,6 @@ begin
         SD:=GetEnv('JAVA_HOME');
         if (SD<>'')then
           Result:=FindFilePath(SD,'java.exe');
-        // scan registry
-        if Result='' then
-          begin
-            if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\WOW6432Node\Mojang\Minecraft','InstallDirNew',SD) then
-              Result:=SD+'runtime\jre-x64\bin'
-              else 
-              if RegQueryStringValue(HKEY_LOCAL_MACHINE,'SOFTWARE\Mojang\Minecraft','InstallDirNew',SD) then
-                Result:=SD+'runtime\jre\bin'
-                else
-                  Result:='';
-            Result:=FindFilePath(Result,'java.exe');
-          end;
       end;
       // new launcher has java beta version
       if Result='' then
@@ -309,7 +297,9 @@ begin
         if Result='' then
           Result:=FindFilePath(ExpandConstant('{#DefaultRuntime}'),'java.exe');
         if Result='' then
-          Result:=FindFilePath(ExpandConstant('{userappdata}'),'java.exe');
+          Result:=FindFilePath(ExpandConstant('{commonpf32}'),'java.exe');
+        if Result='' then
+          Result:=FindFilePath(ExpandConstant('{commonpf}'),'java.exe');
       end;
     end;
 end;

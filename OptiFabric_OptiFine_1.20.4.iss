@@ -35,9 +35,7 @@
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
 
-#define DefaultRuntime '{pf32}\Minecraft Launcher\runtime'
-#define JavaBeta '\java-runtime-beta\windows-x64\java-runtime-beta\bin'
-#define JavaWin '{userappdata}\Local\Packages\Microsoft.4297127D64EC6_8wekyb3d8bbwe\LocalCache\Local\runtime\'
+#define DefaultRuntime '{commonpf32}\Minecraft Launcher\runtime'
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application.
@@ -310,8 +308,6 @@ begin
           Result:=FindFilePath(ST,'java.exe');
         if Result='' then
           Result:=FindFilePath(ExpandConstant('{#DefaultRuntime}'),'java.exe');
-        if Result='' then
-          Result:=FindFilePath(ExpandConstant('{#JavaWin}'),'java.exe');
         if Result='' then
           Result:=FindFilePath(ExpandConstant('{userappdata}'),'java.exe');
       end;

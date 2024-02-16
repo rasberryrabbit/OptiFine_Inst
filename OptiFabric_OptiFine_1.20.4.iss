@@ -21,14 +21,14 @@
 ;#define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName15 'starlight-1.1.3+fabric.f5dcd1a'
 ; memory leak fix
-#define JarName10 'memoryleakfix-forge-1.17+-1.1.2'
+#define JarName10 'memoryleakfix-fabric-1.17+-1.1.5'
 ; iris shader
-#define JarName9 'sodium-fabric-mc1.20.3-0.5.5'
+#define JarName9 'sodium-fabric-0.5.8+mc1.20.4'
 ;#define JarName16 'sodium-fabric-mc1.19.4-0.4.11+build.26-api'
-#define JarName14 'iris-mc1.20.4-1.6.14'
-#define JarName22 'iris-mc1.20.4-1.6.15-beta.1-c127a123-dirty'
+#define JarName14 'iris-mc1.20.4-1.6.17'
+;#define JarName22 'iris-mc1.20.4-1.6.15-beta.1-c127a123-dirty'
 
-#define JarName20 'effortless-fabric-1.20.2-2.0.0-alpha.1'
+;#define JarName20 'effortless-fabric-1.20.2-2.0.0-alpha.1'
 #define JarName21 'lithium-fabric-mc1.20.4-0.12.1'
 
 #define MCVersion '1.20.4'
@@ -129,7 +129,7 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standard custom; Flags: exclusive
 ;Name: "Renderer\Sodium2\API"; Description: "{cm:Sodium2} {#JarName16}"; Types: standard custom;
 Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom; Flags: exclusive
-Name: "Renderer\Sodium2\Iris1"; Description: "{cm:Iris2} {#JarName22}"; Types: custom; Flags: exclusive
+;Name: "Renderer\Sodium2\Iris1"; Description: "{cm:Iris2} {#JarName22}"; Types: custom; Flags: exclusive
 
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
 
@@ -461,7 +461,7 @@ Source: "{#JarName7}.jar"; DestDir: "{code:GetOutDir}"; Components: CocoaInput; 
 Source: "{#JarName9}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
 ;Source: "{#JarName16}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\API; Flags: ignoreversion
 Source: "{#JarName14}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
-Source: "{#JarName22}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris1; Flags: ignoreversion
+;Source: "{#JarName22}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris1; Flags: ignoreversion
 ; memory leak fix
 Source: "{#JarName10}.jar"; DestDir: "{code:GetOutDir}"; Components: MemoryFix\memoryleakfix; Flags: ignoreversion
 ; Debug mod

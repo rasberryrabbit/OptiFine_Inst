@@ -3,25 +3,37 @@
 
 #define CurrDate GetDateTimeString('yymmddhhnn', '', '')
 
+; Fabric
 #define JarName1 'fabric-installer-1.0.0'
+#define JarName4 'fabric-api-0.96.1+1.20.4'
+
 ; optifine
 ;#define JarName2 'OptiFine_1.19.2_HD_U_H9'
 ;#define JarName3 'optifabric-1.13.16'
 
-#define JarName5 'Xaeros_Minimap_23.9.5_Fabric_1.20.4'
-#define JarName12 'XaerosWorldMap_1.37.5_Fabric_1.20.4'
+; Map
+#define JarName5 'Xaeros_Minimap_23.9.7_Fabric_1.20.4'
+#define JarName12 'XaerosWorldMap_1.37.8_Fabric_1.20.4'
 
-#define JarName11 'BetterF3-8.0.2-Fabric-1.20.2'
+#define JarName11 'BetterF3-9.0.0-Fabric-1.20.4'
 #define JarName18 'modmenu-9.0.0-pre.1'
 #define JarName6 'voicechat-fabric-1.20.4-2.4.31'
 
-#define JarName4 'fabric-api-0.93.1+1.20.4'
+; IME
 #define JarName7 'CocoaInput-1.20.2-fabric-4.4.0-EXPERIMENTAL'
+
 ; performance
 ;#define JarName13 'phosphor-fabric-mc1.19.x-0.8.1'
 #define JarName15 'starlight-1.1.3+fabric.f5dcd1a'
+#define JarName21 'lithium-fabric-mc1.20.4-0.12.1'
+
 ; memory leak fix
 #define JarName10 'memoryleakfix-fabric-1.17+-1.1.5'
+
+; distance view
+#define JarName23 'DistantHorizons-fabric-2.0.2-a-dev-1.20.4'
+#define JarName24 'indium-1.0.30+mc1.20.4'
+
 ; iris shader
 #define JarName9 'sodium-fabric-0.5.8+mc1.20.4'
 ;#define JarName16 'sodium-fabric-mc1.19.4-0.4.11+build.26-api'
@@ -29,15 +41,21 @@
 ;#define JarName22 'iris-mc1.20.4-1.6.15-beta.1-c127a123-dirty'
 
 ;#define JarName20 'effortless-fabric-1.20.2-2.0.0-alpha.1'
-#define JarName21 'lithium-fabric-mc1.20.4-0.12.1'
 
-#define MCVersion '1.20.4'
-
+; Shaders
 #define ZipName1 'SEUS-Renewed-v1.0.1'
 #define ZipName2 'Builder''s Modded Shaders V2.10.0'
 #define ZipName3 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
 #define ZipName4 'MakeUp-UltraFast-8.6g'
 #define ZipName5 'BSL_v8.2.01'
+#define ZipName6 'Solas Shader V2.0 [BETA 0.6b]'
+#define ZipName7 'Noble v1.5.6'
+#define ZipName8 'Voyager shader 2.0.7'
+#define ZipName9 'Bliss-Shader-dev'
+
+; ======================================================================
+
+#define MCVersion '1.20.4'
 
 #define DefaultRuntime '{commonpf32}\Minecraft Launcher'
 
@@ -113,6 +131,13 @@ Building=Building
 korean.Building=°Ç¼³
 Effortless=Effortless
 korean.Effortless=Effortless
+ViewMod=View Mod
+korean.ViewMod=ºä ¸ðµå
+DistantHorizonsDesc=Distance Horizons
+korean.DistantHorizonsDesc=Distance Horizons Àå°Å¸® ·»´õ¸µ
+Indium=Indium
+korean.Indium=ÀÎµã
+
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -126,9 +151,10 @@ Name: "CocoaInput"; Description: "{cm:CocoaInput} {#JarName7}"; Types: standard 
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 ;Name: "Renderer\OptiFine"; Description: "{cm:OptiDesc} {#JarName2}"; Types: custom; Flags: exclusive fixed
 ; sodium + iris 
-Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarName9}"; Types: standard custom; 
+Name: "Renderer\Sodium2\Indium"; Description: "{cm:Indium} {#JarName24}"; Types: standard custom;
 ;Name: "Renderer\Sodium2\API"; Description: "{cm:Sodium2} {#JarName16}"; Types: standard custom;
-Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarName14}"; Types: standard custom;
 ;Name: "Renderer\Sodium2\Iris1"; Description: "{cm:Iris2} {#JarName22}"; Types: custom; Flags: exclusive
 
 Name: "BetterF3"; Description: "{cm:Debug} {#JarName11}"; Types: custom
@@ -139,6 +165,9 @@ Name: "MapMod\Minimap"; Description: "{cm:MiniDesc} {#JarName5}"; Types: custom
 
 ;Name: "Building"; Description: "{cm:Building}"; Types: custom
 ;Name: "Building\Effortless"; Description: "{cm:Effortless} {#JarName20}"; Types: custom
+
+Name: "ViewMod"; Description: "{cm:ViewMod}"; Types: custom
+Name: "ViewMod\DistantHorizons"; Description: "{cm:DistantHorizonsDesc} req. Indium {#JarName23}"; Types: custom
 
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 ;Name: "PerfMod\phosphor"; Description: "{#JarName13}"; Types: custom; Flags: exclusive
@@ -153,7 +182,11 @@ Name: "Shader\Zip1"; Description: "{#ZipName1}"; Types: standard custom;
 Name: "Shader\Zip2"; Description: "{#ZipName2}"; Types: standard custom;
 Name: "Shader\Zip3"; Description: "{#ZipName3}"; Types: standard custom;
 Name: "Shader\Zip4"; Description: "{#ZipName4}"; Types: standard custom;
-;Name: "Shader\Zip5"; Description: "{#ZipName7}"; Types: standard custom;
+;Name: "Shader\Zip5"; Description: "{#ZipName5}"; Types: standard custom;
+Name: "Shader\Zip6"; Description: "{#ZipName6}"; Types: standard custom;
+;Name: "Shader\Zip7"; Description: "{#ZipName7}"; Types: standard custom;
+Name: "Shader\Zip8"; Description: "{#ZipName8}"; Types: standard custom;
+Name: "Shader\Zip9"; Description: "{#ZipName9} Support Distant Horizons"; Types: standard custom;
 
 Name: "VoiceChat"; Description: "{cm:VoiceDesc} {#JarName6}"; Types: custom
 Name: "FabricAPI"; Description: "{#JarName4}"; Types: standard custom; Flags: fixed
@@ -474,11 +507,20 @@ Source: "{#JarName15}.jar"; DestDir: "{code:GetOutDir}"; Components: PerfMod\sta
 ;Building
 ;Source: "{#JarName20}.jar"; DestDir: "{code:GetOutDir}"; Components: Building\Effortless; Flags: ignoreversion
 ; Shaders
+
+; distance horizons
+Source: "{#JarName23}.jar"; DestDir: "{code:GetOutDir}"; Components: ViewMod\DistantHorizons; Flags: ignoreversion
+Source: "{#JarName24}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Indium; Flags: ignoreversion
+
 Source: "{#ZipName1}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip1; Flags: ignoreversion
 Source: "{#ZipName2}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip2; Flags: ignoreversion
 Source: "{#ZipName3}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip3; Flags: ignoreversion
 Source: "{#ZipName4}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip4; Flags: ignoreversion
 ;Source: "{#ZipName5}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip5; Flags: ignoreversion
+Source: "{#ZipName6}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip6; Flags: ignoreversion
+;Source: "{#ZipName7}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip7; Flags: ignoreversion
+Source: "{#ZipName8}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip8; Flags: ignoreversion
+Source: "{#ZipName9}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip9; Flags: ignoreversion
 
 [Run]
 Filename: "{code:JavaExec}"; Parameters: "{code:GetFabricFile} client -mcversion {#MCVersion} ";

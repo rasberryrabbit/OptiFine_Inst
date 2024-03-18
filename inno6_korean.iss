@@ -3,7 +3,7 @@
 #include <C:\Program Files (x86)\Inno Download Plugin\idp.iss>
 
 #define MyAppName "Inno setup 6 Unofficial Korean Language Installer"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define default_path_dll "{autopf32}\Inno Setup 6"
 #define default_path "{autopf32}\Inno Setup 6\Languages"
 
@@ -43,14 +43,14 @@ begin
     if WizardIsComponentSelected('github') then
     begin
       DownloadPage.Clear;
-      DownloadPage.Add('https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Unofficial/Korean.isl', 'Korean.isl','');
+      DownloadPage.Add('https://raw.githubusercontent.com/jrsoftware/issrc/main/Files/Languages/Korean.isl', 'Korean.isl','');
       DownloadPage.Show;
       try
         try
           DownloadPage.Download;
           Result:=True;
         except
-          SuppressibleMsgBox(AddPeriod(GetExceptionMessage), mbCriticalError, MB_OK, IDOK);
+          //SuppressibleMsgBox(AddPeriod(GetExceptionMessage), mbCriticalError, MB_OK, IDOK);
           Result:=False;
         end;
       finally

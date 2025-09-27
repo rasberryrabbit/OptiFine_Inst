@@ -17,6 +17,7 @@
 #define Enable_FIX_Memoryleak 0
 #define Enable_BypassResource 1
 #define Enable_Litematica 1
+#define Enable_HoldMyItem 1
 
 ; Fabric
 #define JarFabricInstaller 'fabric-installer-1.1.0'
@@ -77,6 +78,10 @@
 #if Enable_Litematica!=0
 #define JarMalilib 'malilib-fabric-1.21.8-0.25.5'
 #define JarLitematica 'litematica-fabric-1.21.8-0.23.4'
+#endif
+
+#if Enable_HoldMyItem!=0
+#define JarHoldMyItem 'HMI 5.0H1 1.21.6+'
 #endif
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
@@ -188,6 +193,8 @@ XaerosMapDesc=Xaeros
 korean.XaerosMapDesc=Xaeros
 JourneyMapDesc=JourneyMap
 korean.JourneyMapDesc=JourneyMap
+Animation=Animation
+korean.Animation=애니메이션
 
 
 [Types]
@@ -229,6 +236,11 @@ Name: "MapMod\Journey"; Description: "{cm:JourneyMapDesc} {#JarJourneymap}"; Typ
 Name: "MapMod\Xaeros"; Description: "{cm:XaerosMapDesc}"; Types: custom; Flags: exclusive
 Name: "MapMod\Xaeros\Worldmap"; Description: "{cm:WorldDesc} {#JarXaerosWorldmap}"; Types: custom
 Name: "MapMod\Xaeros\Minimap"; Description: "{cm:MiniDesc} {#JarXaerosMinimap}"; Types: custom
+#endif
+
+#if Enable_HoldMyItem!=0
+Name: "Animation"; Description: "{cm:Animation}"; Types: custom
+Name: "Animation\HoldMyItem"; Description: "{#JarHoldMyItem}"; Types: custom
 #endif
 
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
@@ -643,6 +655,10 @@ Source: "{#JarModMenu}.jar"; DestDir: "{code:GetOutDir}"; Components: ModMenu; F
 #if Enable_Litematica!=0
 Source: "{#JarMalilib}.jar"; DestDir: "{code:GetOutDir}"; Components: Building\Litematica\malilib; Flags: ignoreversion; Check: WizardIsComponentSelected('Building\Litematica')
 Source: "{#JarLitematica}.jar"; DestDir: "{code:GetOutDir}"; Components: Building\Litematica; Flags: ignoreversion
+#endif
+
+#if Enable_HoldMyItem!=0
+Source: "{#JarHoldMyItem}.jar"; DestDir: "{code:GetOutDir}"; Components: Animation\HoldMyItem; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

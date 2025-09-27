@@ -234,13 +234,13 @@ Name: "MapMod\Journey"; Description: "{cm:JourneyMapDesc} {#JarJourneymap}"; Typ
 #endif
 #if Enable_MAP_Xaeros!=0
 Name: "MapMod\Xaeros"; Description: "{cm:XaerosMapDesc}"; Types: custom; Flags: exclusive
-Name: "MapMod\Xaeros\Worldmap"; Description: "{cm:WorldDesc} {#JarXaerosWorldmap}"; Types: custom
-Name: "MapMod\Xaeros\Minimap"; Description: "{cm:MiniDesc} {#JarXaerosMinimap}"; Types: custom
+Name: "MapMod\Xaeros\Worldmap"; Description: "{cm:WorldDesc} {#JarXaerosWorldmap}"; Types: standard custom
+Name: "MapMod\Xaeros\Minimap"; Description: "{cm:MiniDesc} {#JarXaerosMinimap}"; Types: standard custom
 #endif
 
 #if Enable_HoldMyItem!=0
 Name: "Animation"; Description: "{cm:Animation}"; Types: custom
-Name: "Animation\HoldMyItem"; Description: "{#JarHoldMyItem}"; Types: custom
+Name: "Animation\HoldMyItem"; Description: "{#JarHoldMyItem}"; Types: standard custom
 #endif
 
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom

@@ -18,6 +18,7 @@
 #define Enable_BypassResource 1
 #define Enable_Litematica 0
 #define Enable_HoldMyItem 0
+#define Enable_LambDynamic 1
 
 ; Fabric
 #define JarFabricInstaller 'fabric-installer-1.1.0'
@@ -82,6 +83,10 @@
 
 #if Enable_HoldMyItem!=0
 #define JarHoldMyItem 'HMI 5.0H1 1.21.6+'
+#endif
+
+#if Enable_LambDynamic!=0
+#define JarLambDynamic 'lambdynamiclights-4.7.2+1.21.9'
 #endif
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
@@ -246,7 +251,11 @@ Name: "Animation\HoldMyItem"; Description: "{#JarHoldMyItem}"; Types: standard c
 Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 
 #if Enable_PERF_Lithium!=0
-Name: "PerfMod\lithium"; Description: "{#JarLithium}"; Types: custom
+Name: "PerfMod\lithium"; Description: "{#JarLithium}"; Types: standard custom
+#endif
+
+#if Enable_LambDynamic!=0
+Name: "LambDynamic"; Description: "{#JarLambDynamic}"; Types: standard custom
 #endif
 
 Name: "Building"; Description: "{cm:Building}"; Types: custom
@@ -659,6 +668,10 @@ Source: "{#JarLitematica}.jar"; DestDir: "{code:GetOutDir}"; Components: Buildin
 
 #if Enable_HoldMyItem!=0
 Source: "{#JarHoldMyItem}.jar"; DestDir: "{code:GetOutDir}"; Components: Animation\HoldMyItem; Flags: ignoreversion
+#endif
+
+#if Enable_LambDynamic!=0
+Source: "{#JarLambDynamic}.jar"; DestDir: "{code:GetOutDir}"; Components: LambDynamic; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

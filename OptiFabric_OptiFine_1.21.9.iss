@@ -227,7 +227,7 @@ Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarIris}"; Types: stan
 #endif
 
 #if Enable_MOD_Menu!=0
-Name: "ModMenu"; Description: "{cm:ModMenu} {#JarModMenu}"; Types: custom;
+Name: "ModMenu"; Description: "{cm:ModMenu} {#JarModMenu}"; Types: standard custom;
 #endif
 
 #if Enable_UI_BetterF3!=0

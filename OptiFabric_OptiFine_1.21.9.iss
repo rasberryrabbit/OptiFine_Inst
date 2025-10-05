@@ -200,6 +200,8 @@ JourneyMapDesc=JourneyMap
 korean.JourneyMapDesc=JourneyMap
 Animation=Animation
 korean.Animation=애니메이션
+EffectMod=Effect
+korean.EffectMod=효과
 
 
 [Types]
@@ -248,18 +250,18 @@ Name: "Animation"; Description: "{cm:Animation}"; Types: custom
 Name: "Animation\HoldMyItem"; Description: "{#JarHoldMyItem}"; Types: standard custom
 #endif
 
-Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
-
 #if Enable_PERF_Lithium!=0
+Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\lithium"; Description: "{#JarLithium}"; Types: standard custom
 #endif
 
 #if Enable_LambDynamic!=0
-Name: "LambDynamic"; Description: "{#JarLambDynamic}"; Types: standard custom
+Name: "Effect"; Description: "{cm:EffectMod}"; Types: standard custom
+Name: "Effect\LambDynamic"; Description: "{#JarLambDynamic}"; Types: standard custom
 #endif
 
-Name: "Building"; Description: "{cm:Building}"; Types: custom
 #if Enable_Litematica!=0
+Name: "Building"; Description: "{cm:Building}"; Types: custom
 Name: "Building\Litematica"; Description: "{#JarLitematica}"; Types: custom
 Name: "Building\Litematica\malilib"; Description: "{#JarMalilib}"; Types: custom;
 #endif
@@ -671,7 +673,7 @@ Source: "{#JarHoldMyItem}.jar"; DestDir: "{code:GetOutDir}"; Components: Animati
 #endif
 
 #if Enable_LambDynamic!=0
-Source: "{#JarLambDynamic}.jar"; DestDir: "{code:GetOutDir}"; Components: LambDynamic; Flags: ignoreversion
+Source: "{#JarLambDynamic}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\LambDynamic; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

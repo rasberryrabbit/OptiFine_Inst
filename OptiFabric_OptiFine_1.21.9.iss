@@ -82,7 +82,7 @@
 #endif
 
 #if Enable_HoldMyItem!=0
-#define JarHoldMyItem 'HMI 5.0H1 1.21.6+'
+#define JarHoldMyItem 'HMI 5.0L4 1.21.6+'
 #endif
 
 #if Enable_LambDynamic!=0

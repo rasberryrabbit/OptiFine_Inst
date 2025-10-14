@@ -227,7 +227,10 @@ Name: "DeleteOldMod"; Description: "{cm:DeleteMods}"; Types: standard custom
 Name: "KoreanChat"; Description: "{cm:KoreanChat} {#JarKoreanIME}"; Types: standard custom
 #endif
 
+#if Enable_RENDER_Sodium!=0 || Enable_RENDER_Iris!=0
 Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
+#endif
+
 ; sodium + iris 
 #if Enable_RENDER_Sodium!=0
 Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom

@@ -3,8 +3,11 @@
 
 #define CurrDate GetDateTimeString('yymmddhhnn', '', '')
 
+; minecraft version
 #define MCVersion '1.21.10'
-#define Enable_IME_Chat 0
+
+; mod status
+#define Enable_IME_Chat 1
 #define Enable_MAP_Xaeros 1
 #define Enable_MAP_journey 1
 #define Enable_VOICE_chat 1
@@ -19,6 +22,9 @@
 #define Enable_Litematica 0
 #define Enable_HoldMyItem 0
 #define Enable_LambDynamic 1
+#define Enable_AsyncParticle 1
+
+; use journeymap for map mod
 #define Use_Journeymap_default 1
 
 ; Fabric
@@ -50,7 +56,7 @@
 #if Enable_IME_Chat!=0
 ; IME
 ;#define JarCaramelchat 'caramelChat-mc1.20.4-fabric-1.2.0'
-#define JarKoreanIME 'koreanpatch-fabric-1.9.0+mc1.21.9'
+#define JarKoreanIME 'koreanpatch-fabric-1.9.1+mc1.21.10'
 #endif
 
 ; performance
@@ -88,6 +94,10 @@
 
 #if Enable_LambDynamic!=0
 #define JarLambDynamic 'lambdynamiclights-4.8.2+1.21.10'
+#endif
+
+#if Enable_AsyncParticle!=0
+#define JarAsyncParticle 'AsyncParticles-Lite-0.7.1-alpha+1.21.10'
 #endif
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
@@ -235,8 +245,9 @@ Name: "ModMenu"; Description: "{cm:ModMenu} {#JarModMenu}"; Types: standard cust
 Name: "BetterF3"; Description: "{cm:Debug} {#JarBetterF3}"; Types: custom
 #endif
 
-
+#if Enable_MAP_journey!=0 || Enable_MAP_Xaeros!=0
 Name: "MapMod"; Description: "{cm:MapMod}"; Types: custom
+#endif
 #if Enable_MAP_journey!=0
 #if Use_Journeymap_default!=0
 Name: "MapMod\Journey"; Description: "{cm:JourneyMapDesc} {#JarJourneymap}"; Types: standard custom; Flags: exclusive
@@ -265,9 +276,16 @@ Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\lithium"; Description: "{#JarLithium}"; Types: standard custom
 #endif
 
-#if Enable_LambDynamic!=0
+#if Enable_LambDynamic!=0 || Enable_AsyncParticle!=0
 Name: "Effect"; Description: "{cm:EffectMod}"; Types: standard custom
+#endif 
+
+#if Enable_LambDynamic!=0
 Name: "Effect\LambDynamic"; Description: "{#JarLambDynamic}"; Types: standard custom
+#endif
+
+#if Enable_AsyncParticle!=0
+Name: "Effect\AsyncParticle"; Description: "{#JarAsyncParticle}"; Types: standard custom
 #endif
 
 #if Enable_Litematica!=0
@@ -684,6 +702,10 @@ Source: "{#JarHoldMyItem}.jar"; DestDir: "{code:GetOutDir}"; Components: Animati
 
 #if Enable_LambDynamic!=0
 Source: "{#JarLambDynamic}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\LambDynamic; Flags: ignoreversion
+#endif
+
+#if Enable_AsyncParticle!=0
+Source: "{#JarAsyncParticle}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\AsyncParticle; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

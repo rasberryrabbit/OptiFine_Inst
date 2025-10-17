@@ -3,6 +3,8 @@
 
 #define CurrDate GetDateTimeString('yymmddhhnn', '', '')
 
+; ----------------------- mod configuration
+
 ; minecraft version
 #define MCVersion '1.21.10'
 
@@ -26,6 +28,9 @@
 
 ; use journeymap for map mod
 #define Use_Journeymap_default 1
+
+
+; ------------------------  mod files names
 
 ; Fabric
 #define JarFabricInstaller 'fabric-installer-1.1.0'
@@ -93,7 +98,7 @@
 #endif
 
 #if Enable_LambDynamic!=0
-#define JarLambDynamic 'lambdynamiclights-4.8.2+1.21.10'
+#define JarLambDynamic 'lambdynamiclights-4.8.4+1.21.10'
 #endif
 
 #if Enable_AsyncParticle!=0
@@ -102,6 +107,7 @@
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
 
+; --------------------------- shader file names
 
 #if Enable_SHADER_Files!=0
 ; Shaders
@@ -214,6 +220,7 @@ korean.Animation=애니메이션
 EffectMod=Effect
 korean.EffectMod=효과
 
+; -------------------------------- install component
 
 [Types]
 Name: "standard"; Description: "{cm:standard}"
@@ -329,6 +336,8 @@ Name: "FabricAPI"; Description: "{#JarFabricAPI}"; Types: standard custom; Flags
 #if Enable_BypassResource!=0
 Name: "BypassResource"; Description: "{#JarBypassResource}"; Types: custom
 #endif
+
+; ---------------------------- code
 
 [Code]
 const

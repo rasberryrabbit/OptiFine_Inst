@@ -14,6 +14,7 @@
 #define Enable_MAP_journey 1
 #define Enable_VOICE_chat 1
 #define Enable_RENDER_Sodium 1
+#define Enable_RENDER_SodiumExtra 1
 #define Enable_RENDER_Iris 1
 #define Enable_MOD_Menu 0
 #define Enable_SHADER_Files 1
@@ -21,10 +22,11 @@
 #define Enable_PERF_Lithium 1
 #define Enable_FIX_Memoryleak 0
 #define Enable_BypassResource 1
-#define Enable_Litematica 0
+#define Enable_Litematica 1
 #define Enable_HoldMyItem 0
 #define Enable_LambDynamic 1
 #define Enable_AsyncParticle 1
+#define Enable_SoundBeGone 1
 
 ; use journeymap for map mod
 #define Use_Journeymap_default 1
@@ -34,7 +36,7 @@
 
 ; Fabric
 #define JarFabricInstaller 'fabric-installer-1.1.0'
-#define JarFabricAPI 'fabric-api-0.135.0+1.21.10'
+#define JarFabricAPI 'fabric-api-0.136.0+1.21.10'
 
 ; Map
 #if Enable_MAP_Xaeros!=0
@@ -80,6 +82,11 @@
 #define JarSodium 'sodium-fabric-0.7.2+mc1.21.10'
 #endif
 
+; sodium extra
+#if Enable_RENDER_SodiumExtra!=0
+#define JarSodiumExtra 'sodium-extra-fabric-0.7.0+mc1.21.9'
+#endif
+
 #if Enable_RENDER_Iris!=0
 #define JarIris 'iris-fabric-1.9.6+mc1.21.9'
 #endif
@@ -89,8 +96,8 @@
 #endif
 
 #if Enable_Litematica!=0
-#define JarMalilib 'malilib-fabric-1.21.8-0.25.5'
-#define JarLitematica 'litematica-fabric-1.21.8-0.23.4'
+#define JarMalilib 'malilib-fabric-1.21.10-0.26.3'
+#define JarLitematica 'litematica-fabric-1.21.10-0.24.2'
 #endif
 
 #if Enable_HoldMyItem!=0
@@ -98,11 +105,16 @@
 #endif
 
 #if Enable_LambDynamic!=0
-#define JarLambDynamic 'lambdynamiclights-4.8.4+1.21.10'
+#define JarLambDynamic 'lambdynamiclights-4.8.5+1.21.10'
 #endif
 
 #if Enable_AsyncParticle!=0
 #define JarAsyncParticle 'AsyncParticles-Lite-0.7.1-alpha+1.21.10'
+#endif
+
+#if Enable_SoundBeGone!=0
+#define JarSoundBeGone 'soundsbegone-fabric-1.4.8+mc1.21.9'
+#define JarClothConfig 'cloth-config-20.0.148-fabric'
 #endif
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
@@ -242,6 +254,10 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 #if Enable_RENDER_Sodium!=0
 Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom
 
+#if Enable_RENDER_SodiumExtra!=0
+Name: "Renderer\Sodium2\SodiumExtra"; Description: "Sodium {#JarSodiumExtra}"; Types: standard custom
+#endif
+
 #if Enable_RENDER_Iris!=0
 Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarIris}"; Types: standard custom;
 #endif
@@ -286,7 +302,7 @@ Name: "PerfMod"; Description: "{cm:PerfMod}"; Types: custom
 Name: "PerfMod\lithium"; Description: "{#JarLithium}"; Types: standard custom
 #endif
 
-#if Enable_LambDynamic!=0 || Enable_AsyncParticle!=0
+#if Enable_LambDynamic!=0 || Enable_AsyncParticle!=0 || Enable_SoundBeGone!=0
 Name: "Effect"; Description: "{cm:EffectMod}"; Types: standard custom
 #endif 
 
@@ -296,6 +312,10 @@ Name: "Effect\LambDynamic"; Description: "{#JarLambDynamic}"; Types: standard cu
 
 #if Enable_AsyncParticle!=0
 Name: "Effect\AsyncParticle"; Description: "{#JarAsyncParticle}"; Types: standard custom
+#endif
+
+#if Enable_SoundBeGone!=0
+Name: "Effect\SoundBeGone"; Description: "{#JarSoundBeGone}"; Types: standard custom
 #endif
 
 #if Enable_Litematica!=0
@@ -670,6 +690,9 @@ Source: "{#JarKoreanIME}.jar"; DestDir: "{code:GetOutDir}"; Components: KoreanCh
 ; Sodium + iris
 #if Enable_RENDER_Sodium!=0
 Source: "{#JarSodium}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2; Flags: ignoreversion
+#if Enable_RENDER_SodiumExtra!=0
+Source: "{#JarSodiumExtra}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\SodiumExtra; Flags: ignoreversion
+#endif
 #if Enable_RENDER_Iris!=0
 Source: "{#JarIris}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ;Source: "{#JarMoreculling}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris1; Flags: ignoreversion
@@ -718,6 +741,11 @@ Source: "{#JarLambDynamic}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect
 
 #if Enable_AsyncParticle!=0
 Source: "{#JarAsyncParticle}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\AsyncParticle; Flags: ignoreversion
+#endif
+
+#if Enable_SoundBeGone!=0
+Source: "{#JarSoundBeGone}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\SoundBeGone; Flags: ignoreversion
+Source: "{#JarClothConfig}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\SoundBeGone; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

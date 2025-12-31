@@ -10,6 +10,7 @@
 
 ; mod status
 #define Enable_IME_Chat 1
+#define Enable_IME_Caramel 1
 #define Enable_MAP_Xaeros 1
 #define Enable_MAP_journey 1
 #define Enable_VOICE_chat 1
@@ -27,6 +28,7 @@
 #define Enable_LambDynamic 1
 #define Enable_AsyncParticle 1
 #define Enable_SoundBeGone 1
+#define Enable_RENDER_Voxy 1
 
 ; use journeymap for map mod
 #define Use_Journeymap_default 1
@@ -36,7 +38,7 @@
 
 ; Fabric
 #define JarFabricInstaller 'fabric-installer-1.1.0'
-#define JarFabricAPI 'fabric-api-0.136.0+1.21.10'
+#define JarFabricAPI 'fabric-api-0.138.3+1.21.10'
 
 ; Map
 #if Enable_MAP_Xaeros!=0
@@ -45,7 +47,7 @@
 #endif
 
 #if Enable_MAP_journey!=0
-#define JarJourneymap 'journeymap-fabric-1.21.10-6.0.0-beta.52'
+#define JarJourneymap 'journeymap-fabric-1.21.10-6.0.0-beta.53'
 #endif
 
 #if Enable_UI_BetterF3!=0
@@ -62,8 +64,11 @@
 
 #if Enable_IME_Chat!=0
 ; IME
-;#define JarCaramelchat 'caramelChat-mc1.20.4-fabric-1.2.0'
-#define JarKoreanIME 'koreanpatch-fabric-1.9.1+mc1.21.10'
+#if Enable_IME_Caramel!=0
+#define JarCaramelchat 'caramelChat-mc1.21.9-fabric-1.2.2'
+#else
+#define JarKoreanIME 'koreanpatch-fabric-1.9.5+mc1.21.10'
+#endif
 #endif
 
 ; performance
@@ -91,13 +96,18 @@
 #define JarIris 'iris-fabric-1.9.6+mc1.21.9'
 #endif
 
+#if Enable_RENDER_Voxy!=0
+#define JarVoxy 'voxy-0.2.6-alpha'
+#endif
+
+
 #if Enable_BypassResource!=0
 #define JarBypassResource 'EpicForcedResourcePackBypassMod-1.7.1'
 #endif
 
 #if Enable_Litematica!=0
 #define JarMalilib 'malilib-fabric-1.21.10-0.26.3'
-#define JarLitematica 'litematica-fabric-1.21.10-0.24.2'
+#define JarLitematica 'litematica-fabric-1.21.10-0.24.3'
 #endif
 
 #if Enable_HoldMyItem!=0
@@ -105,7 +115,7 @@
 #endif
 
 #if Enable_LambDynamic!=0
-#define JarLambDynamic 'lambdynamiclights-4.8.5+1.21.10'
+#define JarLambDynamic 'lambdynamiclights-4.8.6+1.21.10'
 #endif
 
 #if Enable_AsyncParticle!=0
@@ -114,7 +124,7 @@
 
 #if Enable_SoundBeGone!=0
 #define JarSoundBeGone 'soundsbegone-fabric-1.4.8+mc1.21.9'
-#define JarClothConfig 'cloth-config-20.0.148-fabric'
+#define JarClothConfig 'cloth-config-20.0.149-fabric'
 #endif
 
 #define JarVulkan 'VulkanMod_1.21.4-0.5.4'
@@ -135,6 +145,7 @@
 #define ZipShaderBeyond 'BeyondBeliefLegacy_V1.2.3'
 #define ZipShaderOpal 'OPAL_v1.0.0'
 #define ZipShaderComplementary 'ComplementaryUnbound_r5.5.1'
+#define ZipMellow 'Mellow v2.2.1'
 #endif
 
 ; ======================================================================
@@ -231,6 +242,8 @@ Animation=Animation
 korean.Animation=애니메이션
 EffectMod=Effect
 korean.EffectMod=효과
+Voxy=Voxy
+korean.Voxy=Voxy
 
 ; -------------------------------- install component
 
@@ -242,8 +255,11 @@ Name: "custom"; Description: "{cm:custom}"; Flags: iscustom
 Name: "DeleteOldMod"; Description: "{cm:DeleteMods}"; Types: standard custom
 
 #if Enable_IME_Chat!=0
-;Name: "caramelChat"; Description: "{cm:caramelChat} {#JarCaramelchat}"; Types: standard custom
+#if Enable_IME_Caramel!=0
+Name: "caramelChat"; Description: "{cm:caramelChat} {#JarCaramelchat}"; Types: standard custom
+#else
 Name: "KoreanChat"; Description: "{cm:KoreanChat} {#JarKoreanIME}"; Types: standard custom
+#endif
 #endif
 
 #if Enable_RENDER_Sodium!=0 || Enable_RENDER_Iris!=0
@@ -252,7 +268,7 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 
 ; sodium + iris 
 #if Enable_RENDER_Sodium!=0
-Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom
+Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom; Flags: exclusive
 
 #if Enable_RENDER_SodiumExtra!=0
 Name: "Renderer\Sodium2\SodiumExtra"; Description: "Sodium {#JarSodiumExtra}"; Types: standard custom
@@ -261,6 +277,10 @@ Name: "Renderer\Sodium2\SodiumExtra"; Description: "Sodium {#JarSodiumExtra}"; T
 #if Enable_RENDER_Iris!=0
 Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarIris}"; Types: standard custom;
 #endif
+#endif
+
+#if Enable_RENDER_Voxy!=0
+Name: "Renderer\Voxy"; Description: "{cm:Voxy} {#JarVoxy}"; Types: custom; Flags: exclusive
 #endif
 
 #if Enable_MOD_Menu!=0
@@ -345,6 +365,7 @@ Name: "Shader\Zip8"; Description: "{#ZipShaderVoyager}"; Types: standard custom;
 Name: "Shader\Zip10"; Description: "{#ZipShaderBeyond}"; Types: standard custom;
 Name: "Shader\Zip11"; Description: "{#ZipShaderOpal}"; Types: standard custom;
 Name: "Shader\Zip12"; Description: "{#ZipShaderComplementary}"; Types: standard custom;
+Name: "Shader\Zip13"; Description: "{#ZipMellow}"; Types: standard custom;
 #endif
 
 #if Enable_VOICE_chat!=0
@@ -683,8 +704,11 @@ Source: "{#JarVoicechat}.jar"; DestDir: "{code:GetOutDir}"; Components: VoiceCha
 
 ; caramelChat
 #if Enable_IME_Chat!=0
-;Source: "{#JarCaramelchat}.jar"; DestDir: "{code:GetOutDir}"; Components: caramelChat; Flags: ignoreversion
+#if Enable_IME_Caramel!=0
+Source: "{#JarCaramelchat}.jar"; DestDir: "{code:GetOutDir}"; Components: caramelChat; Flags: ignoreversion
+#else
 Source: "{#JarKoreanIME}.jar"; DestDir: "{code:GetOutDir}"; Components: KoreanChat; Flags: ignoreversion
+#endif
 #endif
 
 ; Sodium + iris
@@ -697,6 +721,11 @@ Source: "{#JarSodiumExtra}.jar"; DestDir: "{code:GetOutDir}"; Components: Render
 Source: "{#JarIris}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris; Flags: ignoreversion
 ;Source: "{#JarMoreculling}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Iris1; Flags: ignoreversion
 #endif
+#endif
+
+; voxy
+#if Enable_RENDER_Voxy!=0
+Source: "{#JarVoxy}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Voxy; Flags: ignoreversion
 #endif
 
 ; vulkan mod
@@ -761,6 +790,7 @@ Source: "{#ZipShaderVoyager}.zip"; DestDir: "{code:GetShaderDir}"; Components: S
 Source: "{#ZipShaderBeyond}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip10; Flags: ignoreversion
 Source: "{#ZipShaderOpal}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip11; Flags: ignoreversion
 Source: "{#ZipShaderComplementary}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip12; Flags: ignoreversion
+Source: "{#ZipMellow}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\Zip13; Flags: ignoreversion
 #endif
 
 [Run]

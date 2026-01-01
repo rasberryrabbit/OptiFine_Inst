@@ -17,7 +17,7 @@
 #define Enable_RENDER_Sodium 1
 #define Enable_RENDER_SodiumExtra 1
 #define Enable_RENDER_Iris 1
-#define Enable_MOD_Menu 0
+#define Enable_MOD_Menu 1
 #define Enable_SHADER_Files 1
 #define Enable_UI_BetterF3 0
 #define Enable_PERF_Lithium 1
@@ -55,7 +55,7 @@
 #endif
 
 #if Enable_MOD_Menu!=0
-#define JarModMenu 'modmenu-16.0.0-rc.1'
+#define JarModMenu 'modmenu-16.0.0-rc.2'
 #endif
 
 #if Enable_VOICE_chat!=0

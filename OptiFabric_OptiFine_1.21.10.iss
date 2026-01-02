@@ -268,7 +268,7 @@ Name: "Renderer"; Description: "{cm:Render}"; Types: standard custom;
 
 ; sodium + iris 
 #if Enable_RENDER_Sodium!=0
-Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom; Flags: exclusive
+Name: "Renderer\Sodium2"; Description: "{cm:Sodium2} {#JarSodium}"; Types: standard custom;
 
 #if Enable_RENDER_SodiumExtra!=0
 Name: "Renderer\Sodium2\SodiumExtra"; Description: "Sodium {#JarSodiumExtra}"; Types: standard custom
@@ -280,7 +280,7 @@ Name: "Renderer\Sodium2\Iris"; Description: "{cm:Iris2} {#JarIris}"; Types: stan
 #endif
 
 #if Enable_RENDER_Voxy!=0
-Name: "Renderer\Voxy"; Description: "{cm:Voxy} {#JarVoxy}"; Types: custom; Flags: exclusive
+Name: "Renderer\Sodium2\Voxy"; Description: "{cm:Voxy} {#JarVoxy}"; Types: custom;
 #endif
 
 #if Enable_MOD_Menu!=0
@@ -725,7 +725,7 @@ Source: "{#JarIris}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodi
 
 ; voxy
 #if Enable_RENDER_Voxy!=0
-Source: "{#JarVoxy}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Voxy; Flags: ignoreversion
+Source: "{#JarVoxy}.jar"; DestDir: "{code:GetOutDir}"; Components: Renderer\Sodium2\Voxy; Flags: ignoreversion
 #endif
 
 ; vulkan mod

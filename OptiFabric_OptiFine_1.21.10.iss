@@ -106,7 +106,7 @@
 #endif
 
 #if Enable_Litematica!=0
-#define JarMalilib 'malilib-fabric-1.21.10-0.26.3'
+#define JarMalilib 'malilib-fabric-1.21.10-0.26.8'
 #define JarLitematica 'litematica-fabric-1.21.10-0.24.3'
 #endif
 

@@ -26,7 +26,7 @@
 #define Enable_Litematica 1
 #define Enable_HoldMyItem 0
 #define Enable_LambDynamic 1
-#define Enable_AsyncParticle 1
+#define Enable_AsyncParticle 0
 #define Enable_SoundBeGone 1
 #define Enable_RENDER_Voxy 1
 

@@ -37,8 +37,8 @@
 ; ------------------------  mod files names
 
 ; Fabric
-#define JarFabricInstaller 'fabric-installer-1.1.0'
-#define JarFabricAPI 'fabric-api-0.140.2+1.21.11'
+#define JarFabricInstaller 'fabric-installer-1.1.1'
+#define JarFabricAPI 'fabric-api-0.141.3+1.21.11'
 
 ; Map
 #if Enable_MAP_Xaeros!=0
@@ -47,7 +47,7 @@
 #endif
 
 #if Enable_MAP_journey!=0
-#define JarJourneymap 'journeymap-fabric-1.21.11-6.0.0-beta.54'
+#define JarJourneymap 'journeymap-fabric-1.21.11-6.0.0-beta.57'
 #endif
 
 #if Enable_UI_BetterF3!=0
@@ -55,7 +55,7 @@
 #endif
 
 #if Enable_MOD_Menu!=0
-#define JarModMenu 'modmenu-17.0.0-beta.1'
+#define JarModMenu 'modmenu-17.0.0-beta.2'
 #endif
 
 #if Enable_VOICE_chat!=0
@@ -73,7 +73,7 @@
 
 ; performance
 #if Enable_PERF_Lithium!=0
-#define JarLithium 'lithium-fabric-0.21.2+mc1.21.11'
+#define JarLithium 'lithium-fabric-0.21.3+mc1.21.11'
 #endif
 #define JarMoreculling 'moreculling-fabric-1.21.11-1.6.1'
 
@@ -84,20 +84,20 @@
 
 ; iris shader
 #if Enable_RENDER_Sodium!=0
-#define JarSodium 'sodium-fabric-0.8.2+mc1.21.11'
+#define JarSodium 'sodium-fabric-0.8.4+mc1.21.11'
 #endif
 
 ; sodium extra
 #if Enable_RENDER_SodiumExtra!=0
-#define JarSodiumExtra 'sodium-extra-fabric-0.8.2+mc1.21.11'
+#define JarSodiumExtra 'sodium-extra-fabric-0.8.3+mc1.21.11'
 #endif
 
 #if Enable_RENDER_Iris!=0
-#define JarIris 'iris-fabric-1.10.4+mc1.21.11'
+#define JarIris 'iris-fabric-1.10.5+mc1.21.11'
 #endif
 
 #if Enable_RENDER_Voxy!=0
-#define JarVoxy 'voxy-0.2.8-alpha'
+#define JarVoxy 'voxy-0.2.10-alpha'
 #endif
 
 

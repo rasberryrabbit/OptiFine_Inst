@@ -28,6 +28,7 @@
 #define Enable_LambDynamic 1
 #define Enable_AsyncParticle 0
 #define Enable_SoundBeGone 0
+#define Enable_SoundPhysics 1
 #define Enable_RENDER_Voxy 0
 
 ; use journeymap for map mod
@@ -127,6 +128,10 @@
 #define JarClothConfig 'cloth-config-26.2.155'
 #endif
 
+#if Enable_SoundPhysics!=0
+#define JarSoundphysics 'sound-physics-remastered-fabric-1.5.1+26.2'
+#endif
+
 #define JarVulkan 'VulkanMod-0.6.8+26.1.2'
 
 ; --------------------------- shader file names
@@ -136,7 +141,7 @@
 #define ZipShaderSEUS 'SEUS-Renewed-v1.0.1'
 #define ZipShaderBuilder 'Builder''s Modded Shaders V2.11.0'
 #define ZipShaderSildur 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
-#define ZipShaderMakeup 'MakeUp-UltraFast-9.4b'
+#define ZipShaderMakeup 'MakeUp-UltraFast-9.5d'
 ;#define ZipShaderBSL 'BSL_v8.2.01'
 ;#define ZipShaderSolas 'Solas Shader V2.0 [BETA 0.6b]'
 #define ZipShaderNoble 'Noble v1.5.6'
@@ -336,6 +341,10 @@ Name: "Effect\AsyncParticle"; Description: "{#JarAsyncParticle}"; Types: standar
 
 #if Enable_SoundBeGone!=0
 Name: "Effect\SoundBeGone"; Description: "{#JarSoundBeGone}"; Types: standard custom
+#endif
+
+#if Enable_SoundPhysics!=0
+Name: "Effect\SoundPhysics"; Description: "{#JarSoundPhysics}"; Types: standard custom
 #endif
 
 #if Enable_Litematica!=0
@@ -781,6 +790,10 @@ Source: "{#JarAsyncParticle}.jar"; DestDir: "{code:GetOutDir}"; Components: Effe
 #if Enable_SoundBeGone!=0
 Source: "{#JarSoundBeGone}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\SoundBeGone; Flags: ignoreversion
 Source: "{#JarClothConfig}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\SoundBeGone; Flags: ignoreversion
+#endif
+
+#if Enable_SoundPhysics!=0
+Source: "{#JarSoundPhysics}.jar"; DestDir: "{code:GetOutDir}"; Components: Effect\SoundPhysics; Flags: ignoreversion
 #endif
 
 #if Enable_SHADER_Files!=0

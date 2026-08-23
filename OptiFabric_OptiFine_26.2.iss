@@ -107,8 +107,8 @@
 #endif
 
 #if Enable_Litematica!=0
-#define JarMalilib 'malilib-fabric-26.2-0.29.3'
-#define JarLitematica 'litematica-fabric-26.2-0.28.3'
+#define JarMalilib 'malilib-fabric-26.2-0.29.4'
+#define JarLitematica 'litematica-fabric-26.2-0.28.5'
 #endif
 
 #if Enable_HoldMyItem!=0

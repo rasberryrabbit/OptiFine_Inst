@@ -138,11 +138,11 @@
 
 #if Enable_SHADER_Files!=0
 ; Shaders
-#define ZipShaderSEUS 'SEUS-Renewed-v1.0.1'
+;#define ZipShaderSEUS 'SEUS-Renewed-v1.0.1'
 #define ZipShaderBuilder 'Builder''s Modded Shaders V2.11.0'
 #define ZipShaderSildur 'Sildur''s+Vibrant+Shaders+v1.50+Lite'
 #define ZipShaderMakeup 'MakeUp-UltraFast-9.5d'
-#define ZipShaderNoble 'Noble v1.9.6'
+;#define ZipShaderNoble 'Noble v1.9.6'
 #define ZipShaderBliss 'Bliss_v2.1.2_(Chocapic13_Shaders_edit)'
 #define ZipShaderOpal 'OPAL_v1.2.0'
 #define ZipShaderComplementary 'ComplementaryUnbound_r5.7.1'
@@ -358,11 +358,11 @@ Name: "MemoryFix\memoryleakfix"; Description: "{#JarMemoryleakfix}"; Types: cust
 
 #if Enable_SHADER_Files!=0
 Name: "Shader"; Description: "{cm:Shader}"; Types: standard custom;
-Name: "Shader\ZipSEUS"; Description: "{#ZipShaderSEUS}"; Types: standard custom;
+;Name: "Shader\ZipSEUS"; Description: "{#ZipShaderSEUS}"; Types: standard custom;
 Name: "Shader\ZipBuilderShader"; Description: "{#ZipShaderBuilder}"; Types: standard custom;
 Name: "Shader\ZipSildur"; Description: "{#ZipShaderSildur}"; Types: standard custom;
 Name: "Shader\ZipMakeup"; Description: "{#ZipShaderMakeup}"; Types: standard custom;
-Name: "Shader\ZipNoble"; Description: "{#ZipShaderNoble}"; Types: standard custom;
+;Name: "Shader\ZipNoble"; Description: "{#ZipShaderNoble}"; Types: standard custom;
 Name: "Shader\ZipBliss"; Description: "{#ZipShaderBliss} Support Distant Horizons"; Types: standard custom;
 Name: "Shader\ZipOpal"; Description: "{#ZipShaderOpal}"; Types: standard custom;
 Name: "Shader\ZipComplement"; Description: "{#ZipShaderComplementary}"; Types: standard custom;
@@ -783,11 +783,11 @@ Source: "{#JarSoundPhysics}.jar"; DestDir: "{code:GetOutDir}"; Components: Effec
 #endif
 
 #if Enable_SHADER_Files!=0
-Source: "{#ZipShaderSEUS}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipSEUS; Flags: ignoreversion
+;Source: "{#ZipShaderSEUS}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipSEUS; Flags: ignoreversion
 Source: "{#ZipShaderBuilder}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipBuilderShader; Flags: ignoreversion
 Source: "{#ZipShaderSildur}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipSildur; Flags: ignoreversion
 Source: "{#ZipShaderMakeup}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipMakeup; Flags: ignoreversion
-Source: "{#ZipShaderNoble}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipNoble; Flags: ignoreversion
+;Source: "{#ZipShaderNoble}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipNoble; Flags: ignoreversion
 Source: "{#ZipShaderBliss}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipBliss; Flags: ignoreversion
 Source: "{#ZipShaderOpal}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipOpal; Flags: ignoreversion
 Source: "{#ZipShaderComplementary}.zip"; DestDir: "{code:GetShaderDir}"; Components: Shader\ZipComplement; Flags: ignoreversion

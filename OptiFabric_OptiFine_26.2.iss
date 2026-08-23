@@ -23,7 +23,7 @@
 #define Enable_PERF_Lithium 1
 #define Enable_FIX_Memoryleak 0
 #define Enable_BypassResource 0
-#define Enable_Litematica 0
+#define Enable_Litematica 1
 #define Enable_HoldMyItem 0
 #define Enable_LambDynamic 1
 #define Enable_AsyncParticle 0
@@ -107,8 +107,8 @@
 #endif
 
 #if Enable_Litematica!=0
-#define JarMalilib 'malilib-fabric-1.21.11-0.27.2'
-#define JarLitematica 'litematica-fabric-1.21.10-0.24.3'
+#define JarMalilib 'malilib-fabric-26.2-0.29.3'
+#define JarLitematica 'litematica-fabric-26.2-0.28.3'
 #endif
 
 #if Enable_HoldMyItem!=0
